@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bifrost Sovereign - Karen Memory Graph v2</title>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape-cose-bilkent/4.1.0/cytoscape-cose-bilkent.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -49,7 +50,7 @@
         
         .header-right {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             align-items: center;
         }
         
@@ -84,62 +85,9 @@
             color: #fff;
         }
         
-        #canvas {
+        #cy {
             flex: 1;
             background: #0f1419;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        svg {
-            width: 100%;
-            height: 100%;
-        }
-        
-        .node {
-            cursor: pointer;
-            stroke: #fff;
-            stroke-width: 2px;
-            transition: all 0.2s;
-        }
-        
-        .node:hover {
-            stroke-width: 3px;
-            filter: brightness(1.2);
-        }
-        
-        .node.selected {
-            stroke: #FFD700;
-            stroke-width: 4px;
-            filter: brightness(1.3);
-        }
-        
-        .node.dimmed {
-            opacity: 0.2;
-        }
-        
-        .link {
-            stroke: #4a5568;
-            stroke-width: 1.5px;
-            stroke-opacity: 0.6;
-        }
-        
-        .link.active {
-            stroke: #FFD700;
-            stroke-width: 2.5px;
-            stroke-opacity: 1;
-        }
-        
-        .link.dimmed {
-            opacity: 0.1;
-        }
-        
-        text {
-            font-size: 11px;
-            pointer-events: none;
-            fill: #e0e0e0;
-            text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
-            text-anchor: middle;
         }
         
         #sidebar {
@@ -197,7 +145,6 @@
             font-size: 13px;
             color: #e0e0e0;
             line-height: 1.5;
-            margin-bottom: 12px;
         }
         
         .relation-tag {
@@ -209,24 +156,6 @@
             font-size: 11px;
             margin-right: 6px;
             margin-bottom: 6px;
-        }
-        
-        .metadata-table {
-            width: 100%;
-            font-size: 12px;
-            border-collapse: collapse;
-        }
-        
-        .metadata-table td {
-            padding: 4px;
-            border-bottom: 1px solid #2a2f3e;
-        }
-        
-        .metadata-table td:first-child {
-            color: #8a8a8a;
-            width: 40%;
-            text-align: right;
-            padding-right: 12px;
         }
         
         .controls {
@@ -253,33 +182,6 @@
             margin-bottom: 6px;
         }
         
-        input[type="range"] {
-            width: 100%;
-            height: 5px;
-            border-radius: 3px;
-            background: #3a4050;
-            outline: none;
-            -webkit-appearance: none;
-        }
-        
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #4A90E2;
-            cursor: pointer;
-        }
-        
-        input[type="range"]::-moz-range-thumb {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #4A90E2;
-            cursor: pointer;
-            border: none;
-        }
-        
         button {
             background: #4A90E2;
             border: 1px solid #3a5fa8;
@@ -290,6 +192,7 @@
             cursor: pointer;
             transition: background 0.2s;
             width: 100%;
+            margin-bottom: 8px;
         }
         
         button:hover {
@@ -345,16 +248,6 @@
             margin-right: 8px;
             flex-shrink: 0;
         }
-        
-        .entity-link {
-            color: #4A90E2;
-            cursor: pointer;
-            text-decoration: underline;
-        }
-        
-        .entity-link:hover {
-            color: #5a9ef2;
-        }
     </style>
 </head>
 <body>
@@ -362,7 +255,7 @@
         <header>
             <div class="header-left">
                 <h1>Bifrost Sovereign Memory Graph</h1>
-                <div class="subtitle">Interactive knowledge graph v2.0 • People • Meetings • Decisions • Actions • Files</div>
+                <div class="subtitle">Interactive knowledge graph v2.0 • 85 entities • 118 relationships</div>
             </div>
             <div class="header-right">
                 <div class="tab-group">
@@ -371,14 +264,11 @@
                     <button class="tab-btn" onclick="setFilter('meeting')">Meetings</button>
                     <button class="tab-btn" onclick="setFilter('action_item')">Actions</button>
                     <button class="tab-btn" onclick="setFilter('decision')">Decisions</button>
-                    <button class="tab-btn" onclick="setFilter('file')">Files</button>
-                    <button class="tab-btn" onclick="setFilter('blocker')">Blockers</button>
                 </div>
             </div>
         </header>
-        <div id="canvas">
-            <svg id="graph"></svg>
-        </div>
+        
+        <div id="cy"></div>
         
         <div id="sidebar" class="hidden">
             <div class="sidebar-header">
@@ -396,249 +286,253 @@
         <div class="type-legend" id="legend"></div>
         
         <div class="controls">
+            <button onclick="layout()">Refresh Layout</button>
+            <button onclick="fitView()">Fit View</button>
             <div class="control-group">
-                <div class="control-label">Force Strength</div>
-                <input type="range" id="forceStrength" min="0.1" max="10" step="0.1" value="2">
+                <div class="control-label">Gravity</div>
+                <input type="range" id="gravity" min="0" max="100" value="25" onchange="updateLayout()">
             </div>
-            <button onclick="resetZoom()">Reset View</button>
         </div>
     </div>
 
     <script>
-        const graphUrl = 'graph-data.json';
-        
-        let graph = null;
-        let simulation = null;
-        let selectedNode = null;
+        let cy = null;
+        let allNodes = [];
+        let allEdges = [];
         let currentFilter = 'all';
         
-        // Load and render graph
-        async function loadGraph() {
-            try {
-                const response = await fetch(graphUrl);
-                graph = await response.json();
-                renderGraph();
-                buildLegend();
-            } catch (error) {
-                console.error('Error loading graph:', error);
-                document.getElementById('nodeTitle').textContent = 'Error loading graph data';
-            }
-        }
-        
-        function buildLegend() {
-            const typeMap = {};
-            graph.nodes.forEach(n => {
-                if (!typeMap[n.type]) {
-                    typeMap[n.type] = n.color;
-                }
-            });
+        async function init() {
+            // Load graph data
+            const response = await fetch('graph-data.json');
+            const graph = await response.json();
             
+            allNodes = graph.nodes;
+            allEdges = graph.edges;
+            
+            document.getElementById('nodeCount').textContent = allNodes.length;
+            document.getElementById('linkCount').textContent = allEdges.length;
+            
+            // Build legend
+            const typeMap = {};
+            allNodes.forEach(n => {
+                if (!typeMap[n.type]) typeMap[n.type] = n.color;
+            });
             const legendHtml = Object.entries(typeMap).map(([type, color]) => `
                 <div class="legend-item">
                     <div class="legend-color" style="background: ${color};"></div>
                     <span>${type.replace(/_/g, ' ')}</span>
                 </div>
             `).join('');
-            
             document.getElementById('legend').innerHTML = legendHtml;
+            
+            // Initialize Cytoscape
+            renderGraph();
+        }
+        
+        function renderGraph() {
+            const elements = buildElements();
+            
+            if (cy) cy.destroy();
+            
+            cy = cytoscape({
+                container: document.getElementById('cy'),
+                elements: elements,
+                style: [
+                    {
+                        selector: 'node',
+                        style: {
+                            'background-color': 'data(color)',
+                            'label': 'data(label)',
+                            'width': 'data(size)',
+                            'height': 'data(size)',
+                            'font-size': '10px',
+                            'text-valign': 'center',
+                            'text-halign': 'center',
+                            'color': '#fff',
+                            'border-width': '2px',
+                            'border-color': '#fff',
+                            'text-wrap': 'wrap',
+                            'text-max-width': '60px'
+                        }
+                    },
+                    {
+                        selector: 'node:selected',
+                        style: {
+                            'border-color': '#FFD700',
+                            'border-width': '4px'
+                        }
+                    },
+                    {
+                        selector: 'edge',
+                        style: {
+                            'line-color': '#4a5568',
+                            'opacity': '0.6',
+                            'width': 'mapData(weight, 0, 3, 1, 3)',
+                            'curve-style': 'straight'
+                        }
+                    },
+                    {
+                        selector: 'edge:selected',
+                        style: {
+                            'line-color': '#FFD700',
+                            'opacity': '1',
+                            'width': '3px'
+                        }
+                    }
+                ],
+                wheelSensitivity: 0.1,
+                autounselectify: false
+            });
+            
+            cy.on('tap', 'node', function(e) {
+                const node = e.target;
+                showNodeDetails(node.data());
+            });
+            
+            cy.on('tap', function(e) {
+                if (e.target === cy) {
+                    document.getElementById('sidebar').classList.add('hidden');
+                }
+            });
+            
+            layout();
+        }
+        
+        function buildElements() {
+            let nodes = allNodes;
+            let edges = allEdges;
+            
+            if (currentFilter !== 'all') {
+                nodes = allNodes.filter(n => n.type === currentFilter);
+                const nodeIds = new Set(nodes.map(n => n.id));
+                edges = allEdges.filter(e => nodeIds.has(e.source) && nodeIds.has(e.target));
+            }
+            
+            const cyNodes = nodes.map(n => ({
+                data: { ...n, id: n.id, label: n.label },
+                style: { 'background-color': n.color }
+            }));
+            
+            const cyEdges = edges.map((e, i) => ({
+                data: { 
+                    id: `edge-${i}`,
+                    source: e.source, 
+                    target: e.target,
+                    weight: e.weight || 1,
+                    relation: e.relation
+                }
+            }));
+            
+            return [...cyNodes, ...cyEdges];
+        }
+        
+        function layout() {
+            if (!cy) return;
+            
+            const gravity = parseInt(document.getElementById('gravity').value) / 100;
+            
+            const layout = cy.layout({
+                name: 'cose-bilkent',
+                animate: true,
+                animationDuration: 500,
+                avoidOverlap: true,
+                avoidOverlapPadding: 20,
+                nodeDimensionsIncludeLabels: true,
+                gravity: gravity,
+                gravityRange: 200,
+                nodeSpacing: 20,
+                edgeElasticity: 0.1,
+                nestingFactor: 1.2,
+                randomize: false,
+                tilingPaddingVertical: 20,
+                tilingPaddingHorizontal: 20,
+                quality: 'default',
+                directed: false,
+                refresh: 20,
+                fit: true,
+                padding: 50
+            });
+            
+            layout.run();
+        }
+        
+        function updateLayout() {
+            layout();
+        }
+        
+        function fitView() {
+            if (cy) cy.fit(null, 50);
         }
         
         function setFilter(type) {
             currentFilter = type;
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
+            
+            const elements = buildElements();
+            document.getElementById('nodeCount').textContent = elements.filter(e => !e.data.source).length;
+            document.getElementById('linkCount').textContent = elements.filter(e => e.data.source).length;
+            
             renderGraph();
         }
         
-        function renderGraph() {
-            const width = document.getElementById('canvas').clientWidth;
-            const height = document.getElementById('canvas').clientHeight;
-            
-            const svg = d3.select('#graph');
-            svg.selectAll('*').remove();
-            
-            // Filter nodes based on current filter
-            let visibleNodeIds = new Set();
-            let filteredNodes = graph.nodes;
-            
-            if (currentFilter !== 'all') {
-                filteredNodes = graph.nodes.filter(n => n.type === currentFilter);
-            }
-            
-            filteredNodes.forEach(n => visibleNodeIds.add(n.id));
-            
-            // Filter edges to only show connections between visible nodes
-            const filteredEdges = graph.edges.filter(e => 
-                visibleNodeIds.has(e.source) && visibleNodeIds.has(e.target)
-            );
-            
-            // Update stats
-            document.getElementById('nodeCount').textContent = filteredNodes.length;
-            document.getElementById('linkCount').textContent = filteredEdges.length;
-            
-            const g = svg.append('g');
-            
-            const zoom = d3.zoom().on('zoom', (event) => {
-                g.attr('transform', event.transform);
-            });
-            svg.call(zoom);
-            
-            // Create force simulation with aggressive spread
-            simulation = d3.forceSimulation(filteredNodes)
-                .force('link', d3.forceLink(filteredEdges)
-                    .id(d => d.id)
-                    .distance(150)
-                    .strength(0.05))
-                .force('charge', d3.forceManyBody()
-                    .strength(-800)
-                    .distanceMin(30)
-                    .distanceMax(800))
-                .force('center', d3.forceCenter(width / 2, height / 2).strength(0.01))
-                .force('collision', d3.forceCollide()
-                    .radius(d => d.size + 20)
-                    .strength(1)
-                    .iterations(3))
-                .force('x', d3.forceX(width / 2).strength(0.001))
-                .force('y', d3.forceY(height / 2).strength(0.001))
-                .velocityDecay(0.6)
-                .alphaTarget(0.08)
-                .alphaDecay(0.0005);
-            
-            // Draw edges
-            const link = g.append('g')
-                .selectAll('line')
-                .data(filteredEdges)
-                .enter()
-                .append('line')
-                .attr('class', 'link')
-                .attr('stroke-width', d => d.weight * 0.5);
-            
-            // Draw nodes
-            const node = g.append('g')
-                .selectAll('circle')
-                .data(filteredNodes)
-                .enter()
-                .append('circle')
-                .attr('class', 'node')
-                .attr('r', d => d.size)
-                .attr('fill', d => d.color)
-                .on('click', (event, d) => selectNode(d, event))
-                .call(drag(simulation));
-            
-            // Add labels
-            const labels = g.append('g')
-                .selectAll('text')
-                .data(filteredNodes)
-                .enter()
-                .append('text')
-                .attr('text-anchor', 'middle')
-                .attr('dominant-baseline', 'middle')
-                .text(d => {
-                    const words = d.label.split(' ');
-                    return words[0].substring(0, 8);
-                })
-                .style('pointer-events', 'none');
-            
-            simulation.on('tick', () => {
-                link
-                    .attr('x1', d => d.source.x)
-                    .attr('y1', d => d.source.y)
-                    .attr('x2', d => d.target.x)
-                    .attr('y2', d => d.target.y);
-                
-                node
-                    .attr('cx', d => d.x)
-                    .attr('cy', d => d.y);
-                
-                labels
-                    .attr('x', d => d.x)
-                    .attr('y', d => d.y);
-            });
-            
-            // Zoom to fit
-            const bounds = g.node().getBBox();
-            const midX = bounds.x + bounds.width / 2;
-            const midY = bounds.y + bounds.height / 2;
-            const scale = Math.min(width / bounds.width, height / bounds.height) * 0.85;
-            svg.transition().duration(750).call(zoom.transform,
-                d3.zoomIdentity
-                    .translate(width / 2, height / 2)
-                    .scale(scale)
-                    .translate(-midX, -midY)
-            );
-        }
-        
-        function selectNode(d, event) {
-            event.stopPropagation();
-            selectedNode = d;
-            
-            d3.selectAll('.node').classed('selected', n => n.id === d.id);
-            d3.selectAll('.link').classed('active', l => l.source.id === d.id || l.target.id === d.id);
-            
+        function showNodeDetails(nodeData) {
             const sidebar = document.getElementById('sidebar');
-            document.getElementById('nodeTitle').textContent = d.label;
-            document.getElementById('nodeType').textContent = d.type.replace(/_/g, ' ');
-            
-            const relatedEdges = graph.edges.filter(e => e.source === d.id || e.target === d.id);
-            const relatedNodes = relatedEdges.map(e => e.source === d.id ? e.target : e.source).map(id => graph.nodes.find(n => n.id === id)).filter(Boolean);
+            document.getElementById('nodeTitle').textContent = nodeData.label;
+            document.getElementById('nodeType').textContent = nodeData.type.replace(/_/g, ' ');
             
             let html = `
                 <div class="sidebar-section">
                     <div class="sidebar-label">Description</div>
-                    <div class="sidebar-value">${d.description || 'No description'}</div>
+                    <div class="sidebar-value">${nodeData.description || 'No description'}</div>
                 </div>
             `;
             
-            // Add type-specific metadata
-            if (d.type === 'person' && d.actionsOwned) {
-                html += `
-                    <div class="sidebar-section">
-                        <div class="sidebar-label">Workload</div>
-                        <table class="metadata-table">
-                            <tr><td>Actions Owned:</td><td>${d.actionsOwned}</td></tr>
-                            <tr><td>Last Active:</td><td>${d.lastActive}</td></tr>
-                        </table>
-                    </div>
-                `;
-            } else if (d.type === 'action_item') {
+            // Type-specific metadata
+            if (nodeData.type === 'person' && nodeData.actionsOwned) {
                 html += `
                     <div class="sidebar-section">
                         <div class="sidebar-label">Details</div>
-                        <table class="metadata-table">
-                            <tr><td>Owner:</td><td>${d.owner || 'Unassigned'}</td></tr>
-                            <tr><td>Deadline:</td><td>${d.deadline || 'No deadline'}</td></tr>
-                            <tr><td>Status:</td><td>${d.status || 'Open'}</td></tr>
-                            ${d.isOverdue ? '<tr><td>Status:</td><td style="color: #C0392B;">⚠️ OVERDUE</td></tr>' : ''}
-                        </table>
-                    </div>
-                `;
-            } else if (d.type === 'meeting') {
-                html += `
-                    <div class="sidebar-section">
-                        <div class="sidebar-label">Attendees</div>
                         <div class="sidebar-value">
-                            ${d.attendees?.map(a => `<div class="relation-tag">${a}</div>`).join('') || 'No attendees'}
+                            <strong>Actions Owned:</strong> ${nodeData.actionsOwned}<br>
+                            <strong>Last Active:</strong> ${nodeData.lastActive || 'Unknown'}
                         </div>
                     </div>
                 `;
-            } else if (d.type === 'blocker') {
+            } else if (nodeData.type === 'action_item') {
                 html += `
                     <div class="sidebar-section">
-                        <div class="sidebar-label">Severity</div>
-                        <div class="sidebar-value" style="color: ${d.severity === 'high' ? '#C0392B' : '#F39C12'}">${d.severity || 'Unknown'}</div>
+                        <div class="sidebar-label">Details</div>
+                        <div class="sidebar-value">
+                            <strong>Owner:</strong> ${nodeData.owner || 'Unassigned'}<br>
+                            <strong>Deadline:</strong> ${nodeData.deadline || 'No deadline'}<br>
+                            <strong>Status:</strong> ${nodeData.status || 'Open'}
+                            ${nodeData.isOverdue ? '<br><strong style="color: #C0392B;">⚠️ OVERDUE</strong>' : ''}
+                        </div>
                     </div>
                 `;
             }
             
-            // Add relationships
+            // Related nodes
+            const relatedEdges = allEdges.filter(e => 
+                (e.source === nodeData.id || e.target === nodeData.id)
+            );
+            
             if (relatedEdges.length > 0) {
                 html += `
                     <div class="sidebar-section">
-                        <div class="sidebar-label">Relationships (${relatedEdges.length})</div>
+                        <div class="sidebar-label">Connected To (${relatedEdges.length})</div>
                         <div class="sidebar-value">
                             ${relatedEdges.map(e => {
-                                const related = graph.nodes.find(n => n.id === (e.source === d.id ? e.target : e.source));
-                                return related ? `<div class="relation-tag">${e.relation} <span class="entity-link" onclick="selectNodeByLabel('${related.label}')">${related.label.substring(0, 20)}</span></div>` : '';
+                                const relatedNode = allNodes.find(n => 
+                                    n.id === (e.source === nodeData.id ? e.target : e.source)
+                                );
+                                return relatedNode ? `
+                                    <div class="relation-tag" style="cursor: pointer; margin-bottom: 8px;" 
+                                         onclick="cy.$('#${relatedNode.id}').trigger('tap')">
+                                        ${e.relation} → ${relatedNode.label.substring(0, 25)}
+                                    </div>
+                                ` : '';
                             }).join('')}
                         </div>
                     </div>
@@ -649,59 +543,7 @@
             sidebar.classList.remove('hidden');
         }
         
-        function selectNodeByLabel(label) {
-            const node = graph.nodes.find(n => n.label === label || n.label.includes(label));
-            if (node) {
-                selectNode(node, { stopPropagation: () => {} });
-            }
-        }
-        
-        function drag(simulation) {
-            function dragstarted(event, d) {
-                if (!event.active) simulation.alphaTarget(0.3).restart();
-                d.fx = d.x;
-                d.fy = d.y;
-            }
-            
-            function dragged(event, d) {
-                d.fx = event.x;
-                d.fy = event.y;
-            }
-            
-            function dragended(event, d) {
-                if (!event.active) simulation.alphaTarget(0);
-                d.fx = null;
-                d.fy = null;
-            }
-            
-            return d3.drag()
-                .on('start', dragstarted)
-                .on('drag', dragged)
-                .on('end', dragended);
-        }
-        
-        function resetZoom() {
-            d3.select('#graph').transition().duration(750).call(d3.zoom().transform, d3.zoomIdentity);
-        }
-        
-        document.getElementById('forceStrength').addEventListener('input', (e) => {
-            const strength = parseFloat(e.target.value);
-            if (simulation) {
-                simulation.force('charge', d3.forceManyBody()
-                    .strength(-800 * strength)
-                    .distanceMin(30)
-                    .distanceMax(800));
-                simulation.alphaTarget(0.15).restart();
-            }
-        });
-        
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                document.getElementById('sidebar').classList.add('hidden');
-            }
-        });
-        
-        window.addEventListener('load', loadGraph);
+        window.addEventListener('load', init);
     </script>
 </body>
 </html>
