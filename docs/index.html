@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bifrost Sovereign - Karen Memory Graph</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -36,27 +36,48 @@
             color: #a0a0a0;
         }
         
-        #cy {
+        #canvas {
             width: 100%;
             height: calc(100vh - 80px);
             background: #0f1419;
         }
         
-        .button {
-            display: inline-block;
-            padding: 8px 14px;
-            margin-right: 8px;
-            background: #4A90E2;
-            border: 1px solid #3a5fa8;
-            color: #fff;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-            margin-top: 12px;
+        svg {
+            width: 100%;
+            height: 100%;
         }
         
-        .button:hover {
-            background: #5a9ef2;
+        .node {
+            cursor: pointer;
+            stroke: #fff;
+            stroke-width: 2px;
+        }
+        
+        .node:hover {
+            stroke-width: 3px;
+            filter: brightness(1.2);
+        }
+        
+        .node.selected {
+            stroke: #FFD700;
+            stroke-width: 4px;
+            filter: brightness(1.3);
+        }
+        
+        .link {
+            stroke: #4a5568;
+            stroke-width: 1.5px;
+            stroke-opacity: 0.6;
+            pointer-events: none;
+        }
+        
+        text {
+            font-size: 11px;
+            pointer-events: none;
+            fill: #e0e0e0;
+            text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+            text-anchor: middle;
+            dominant-baseline: middle;
         }
         
         #sidebar {
@@ -125,11 +146,12 @@
 <body>
     <div id="header">
         <h1>Bifrost Sovereign Memory Graph</h1>
-        <div class="subtitle">Interactive mindmap • Bifrost at the center, radiating to all operations</div>
-        <button class="button" onclick="resetView()">Reset View</button>
+        <div class="subtitle">Interactive mindmap • Bifrost at center, everything radiates outward</div>
     </div>
     
-    <div id="cy"></div>
+    <div id="canvas">
+        <svg id="graph"></svg>
+    </div>
     
     <div id="sidebar">
         <div class="sidebar-header" id="sidebarTitle">Select a node</div>
@@ -142,229 +164,190 @@
     </div>
 
     <script>
-        let cy = null;
-        let fullGraph = null;
+        let graph = null;
+        let simulation = null;
         
-        async function initGraph() {
+        async function init() {
             const res = await fetch('graph-data.json');
-            fullGraph = await res.json();
+            graph = await res.json();
             
-            document.getElementById('nodeCount').textContent = fullGraph.nodes.length;
-            document.getElementById('edgeCount').textContent = fullGraph.edges.length;
+            document.getElementById('nodeCount').textContent = graph.nodes.length;
+            document.getElementById('edgeCount').textContent = graph.edges.length;
             
             renderMindmap();
         }
         
         function renderMindmap() {
-            // Build hierarchical structure
-            const cyNodes = fullGraph.nodes.map(n => ({
-                data: {
-                    id: n.id,
-                    label: n.label,
-                    type: n.type,
-                    description: n.description,
-                    ...n
-                },
-                style: {
-                    'background-color': n.color,
-                    'width': Math.max(30, Math.min(60, n.size || 30)),
-                    'height': Math.max(30, Math.min(60, n.size || 30))
-                }
+            const width = document.getElementById('canvas').clientWidth;
+            const height = document.getElementById('canvas').clientHeight;
+            
+            const svg = d3.select('#graph');
+            svg.selectAll('*').remove();
+            
+            const g = svg.append('g');
+            
+            // Zoom
+            const zoom = d3.zoom().on('zoom', (event) => {
+                g.attr('transform', event.transform);
+            });
+            svg.call(zoom);
+            
+            // Create hierarchical layout: Bifrost at center
+            const nodes = graph.nodes.map(d => ({...d}));
+            const links = graph.edges.map(d => ({
+                source: d.source,
+                target: d.target,
+                relation: d.relation,
+                weight: d.weight || 1
             }));
             
-            const cyEdges = fullGraph.edges.map((e, i) => ({
-                data: {
-                    id: `e${i}`,
-                    source: e.source,
-                    target: e.target,
-                    relation: e.relation,
-                    weight: e.weight || 1
-                }
-            }));
-            
-            if (cy) cy.destroy();
-            
-            cy = cytoscape({
-                container: document.getElementById('cy'),
-                elements: [...cyNodes, ...cyEdges],
-                style: [
-                    {
-                        selector: 'node',
-                        style: {
-                            'label': 'data(label)',
-                            'text-valign': 'center',
-                            'text-halign': 'center',
-                            'font-size': '11px',
-                            'color': '#fff',
-                            'border-width': '2px',
-                            'border-color': '#fff',
-                            'cursor': 'pointer',
-                            'text-wrap': 'wrap',
-                            'text-max-width': '80px'
-                        }
-                    },
-                    {
-                        selector: 'node[id="bifrost"]',
-                        style: {
-                            'width': 80,
-                            'height': 80,
-                            'font-size': '14px',
-                            'font-weight': 'bold'
-                        }
-                    },
-                    {
-                        selector: 'node:selected',
-                        style: {
-                            'border-color': '#FFD700',
-                            'border-width': '4px',
-                            'box-shadow': '0 0 15px #FFD700'
-                        }
-                    },
-                    {
-                        selector: 'edge',
-                        style: {
-                            'line-color': '#4a5568',
-                            'width': 'mapData(weight, 1, 3, 1, 2)',
-                            'opacity': '0.5',
-                            'curve-style': 'straight',
-                            'target-arrow-shape': 'none'
-                        }
-                    },
-                    {
-                        selector: 'edge:selected',
-                        style: {
-                            'line-color': '#FFD700',
-                            'opacity': '1',
-                            'width': '3px'
-                        }
-                    }
-                ],
-                wheelSensitivity: 0.1
-            });
-            
-            cy.on('tap', 'node', onNodeClick);
-            cy.on('tap', onBackgroundClick);
-            
-            runMindmapLayout();
-        }
-        
-        function runMindmapLayout() {
-            if (!cy) return;
-            
-            const layout = cy.layout({
-                name: 'concentric',
-                directed: false,
-                roots: '#bifrost',
-                concentric: function(node) {
-                    // Bifrost at center (highest concentric level)
-                    if (node.id() === 'bifrost') return 10;
-                    
-                    // People and Business Functions next ring
-                    if (['person', 'business_function'].includes(node.data('type'))) return 9;
-                    
-                    // Meetings, Actions, Decisions next
-                    if (['meeting', 'action_item', 'decision'].includes(node.data('type'))) return 8;
-                    
-                    // Everything else outer
-                    return 7;
-                },
-                levelWidth: function(nodes) {
-                    return nodes.maxDegree() / 4;
-                },
-                animate: true,
-                animationDuration: 800,
-                fit: true,
-                padding: 100,
-                startAngle: 3 / 2 * Math.PI,
-                clockwise: true,
-                equidistant: false
-            });
-            
-            layout.run();
-        }
-        
-        function resetView() {
-            if (cy) {
-                cy.fit(null, 100);
+            // Pin Bifrost to center
+            const bifrost = nodes.find(n => n.id === 'bifrost');
+            if (bifrost) {
+                bifrost.fx = width / 2;
+                bifrost.fy = height / 2;
             }
+            
+            // Create simulation
+            simulation = d3.forceSimulation(nodes)
+                .force('link', d3.forceLink(links)
+                    .id(d => d.id)
+                    .distance(d => {
+                        // Short links to Bifrost, longer for others
+                        if (d.source.id === 'bifrost' || d.target.id === 'bifrost') return 150;
+                        return 200;
+                    })
+                    .strength(0.1))
+                .force('charge', d3.forceManyBody()
+                    .strength(-800)
+                    .distanceMin(50)
+                    .distanceMax(1000))
+                .force('center', d3.forceCenter(width / 2, height / 2).strength(0.02))
+                .force('collision', d3.forceCollide()
+                    .radius(d => d.size + 15)
+                    .strength(0.9))
+                .alphaTarget(0.1)
+                .alphaDecay(0.0008);
+            
+            // Draw links
+            const link = g.append('g')
+                .selectAll('line')
+                .data(links)
+                .enter()
+                .append('line')
+                .attr('class', 'link')
+                .attr('stroke-width', d => Math.max(1, d.weight * 0.7));
+            
+            // Draw nodes
+            const node = g.append('g')
+                .selectAll('circle')
+                .data(nodes)
+                .enter()
+                .append('circle')
+                .attr('class', 'node')
+                .attr('r', d => d.size || 30)
+                .attr('fill', d => d.color)
+                .on('click', (e, d) => selectNode(d))
+                .call(drag(simulation));
+            
+            // Draw labels
+            const labels = g.append('g')
+                .selectAll('text')
+                .data(nodes)
+                .enter()
+                .append('text')
+                .text(d => {
+                    if (d.id === 'bifrost') return 'Bifrost\nSovereign';
+                    const words = d.label.split(' ');
+                    return words[0].substring(0, 10);
+                })
+                .attr('font-weight', d => d.id === 'bifrost' ? 'bold' : 'normal')
+                .attr('font-size', d => d.id === 'bifrost' ? '14px' : '11px');
+            
+            // Update positions on tick
+            simulation.on('tick', () => {
+                link
+                    .attr('x1', d => d.source.x)
+                    .attr('y1', d => d.source.y)
+                    .attr('x2', d => d.target.x)
+                    .attr('y2', d => d.target.y);
+                
+                node
+                    .attr('cx', d => d.x)
+                    .attr('cy', d => d.y);
+                
+                labels
+                    .attr('x', d => d.x)
+                    .attr('y', d => d.y);
+            });
+            
+            // Zoom to fit
+            setTimeout(() => {
+                const bounds = g.node().getBBox();
+                const midX = bounds.x + bounds.width / 2;
+                const midY = bounds.y + bounds.height / 2;
+                const scale = Math.min(width / bounds.width, height / bounds.height) * 0.8;
+                svg.transition().duration(750).call(zoom.transform,
+                    d3.zoomIdentity
+                        .translate(width / 2, height / 2)
+                        .scale(scale)
+                        .translate(-midX, -midY)
+                );
+            }, 500);
         }
         
-        function onNodeClick(e) {
-            const node = e.target.data();
-            const sidebar = document.getElementById('sidebar');
+        function selectNode(d) {
+            d3.selectAll('.node').classed('selected', n => n.id === d.id);
             
-            document.getElementById('sidebarTitle').textContent = node.label;
+            const sidebar = document.getElementById('sidebar');
+            document.getElementById('sidebarTitle').textContent = d.label;
             
             let html = `
                 <div class="sidebar-section">
                     <div class="sidebar-label">Type</div>
-                    <div class="sidebar-value" style="color: #4A90E2; font-weight: 600;">${node.type.replace(/_/g, ' ')}</div>
+                    <div class="sidebar-value" style="color: #4A90E2;">${d.type.replace(/_/g, ' ')}</div>
                 </div>
                 <div class="sidebar-section">
                     <div class="sidebar-label">Description</div>
-                    <div class="sidebar-value">${node.description || 'No description'}</div>
+                    <div class="sidebar-value">${d.description || 'No description'}</div>
                 </div>
             `;
             
-            // Add metadata based on type
-            if (node.type === 'person' && node.actionsOwned) {
+            if (d.type === 'person' && d.actionsOwned) {
                 html += `
                     <div class="sidebar-section">
-                        <div class="sidebar-label">Workload</div>
+                        <div class="sidebar-label">Details</div>
                         <div class="sidebar-value">
-                            <strong>Actions:</strong> ${node.actionsOwned}<br>
-                            <strong>Active:</strong> ${node.lastActive || 'Unknown'}
+                            <strong>Actions:</strong> ${d.actionsOwned}<br>
+                            <strong>Last Active:</strong> ${d.lastActive || '—'}
                         </div>
                     </div>
                 `;
-            } else if (node.type === 'action_item') {
+            } else if (d.type === 'action_item') {
                 html += `
                     <div class="sidebar-section">
-                        <div class="sidebar-label">Task Details</div>
+                        <div class="sidebar-label">Task</div>
                         <div class="sidebar-value">
-                            <strong>Owner:</strong> ${node.owner || 'Unassigned'}<br>
-                            <strong>Due:</strong> ${node.deadline || 'No deadline'}<br>
-                            <strong>Status:</strong> ${node.status || 'Open'}
-                            ${node.isOverdue ? '<br><strong style="color: #C0392B;">⚠️ OVERDUE</strong>' : ''}
-                        </div>
-                    </div>
-                `;
-            } else if (node.type === 'business_function') {
-                html += `
-                    <div class="sidebar-section">
-                        <div class="sidebar-label">Workstream</div>
-                        <div class="sidebar-value">
-                            <strong>Owner:</strong> ${node.owner || 'TBD'}
-                        </div>
-                    </div>
-                `;
-            } else if (node.type === 'meeting') {
-                html += `
-                    <div class="sidebar-section">
-                        <div class="sidebar-label">Meeting</div>
-                        <div class="sidebar-value">
-                            <strong>Frequency:</strong> ${node.frequency || 'Recurring'}<br>
-                            <strong>Type:</strong> Team sync
+                            <strong>Owner:</strong> ${d.owner || '—'}<br>
+                            <strong>Due:</strong> ${d.deadline || '—'}<br>
+                            <strong>Status:</strong> ${d.status || 'Open'}
                         </div>
                     </div>
                 `;
             }
             
-            // Show connected nodes
-            const connectedEdges = fullGraph.edges.filter(e => e.source === node.id || e.target === node.id);
-            if (connectedEdges.length > 0) {
+            // Related nodes
+            const related = graph.edges.filter(e => e.source === d.id || e.target === d.id);
+            if (related.length > 0) {
                 html += `
                     <div class="sidebar-section">
-                        <div class="sidebar-label">Connected (${connectedEdges.length})</div>
-                        <div class="sidebar-value" style="font-size: 12px;">
-                            ${connectedEdges.map(e => {
-                                const relId = e.source === node.id ? e.target : e.source;
-                                const relNode = fullGraph.nodes.find(n => n.id === relId);
-                                return relNode ? `<div style="margin-bottom: 8px;">
-                                    <strong>${e.relation}:</strong><br>
-                                    ${relNode.label}
-                                </div>` : '';
-                            }).join('')}
+                        <div class="sidebar-label">Connected (${related.length})</div>
+                        <div class="sidebar-value" style="font-size: 12px; line-height: 2;">
+                            ${related.map(e => {
+                                const relId = e.source === d.id ? e.target : e.source;
+                                const relNode = graph.nodes.find(n => n.id === relId);
+                                return relNode ? `${e.relation}<br><strong>${relNode.label}</strong>` : '';
+                            }).join('<br>—<br>')}
                         </div>
                     </div>
                 `;
@@ -374,13 +357,31 @@
             sidebar.classList.add('show');
         }
         
-        function onBackgroundClick(e) {
-            if (e.target === cy) {
-                document.getElementById('sidebar').classList.remove('show');
+        function drag(simulation) {
+            function dragstarted(event, d) {
+                if (!event.active) simulation.alphaTarget(0.3).restart();
+                d.fx = d.x;
+                d.fy = d.y;
             }
+            
+            function dragged(event, d) {
+                d.fx = event.x;
+                d.fy = event.y;
+            }
+            
+            function dragended(event, d) {
+                if (!event.active) simulation.alphaTarget(0.1);
+                d.fx = null;
+                d.fy = null;
+            }
+            
+            return d3.drag()
+                .on('start', dragstarted)
+                .on('drag', dragged)
+                .on('end', dragended);
         }
         
-        window.addEventListener('load', initGraph);
+        window.addEventListener('load', init);
     </script>
 </body>
 </html>
