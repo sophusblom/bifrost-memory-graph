@@ -42,30 +42,6 @@
             background: #0f1419;
         }
         
-        .tab-btn {
-            display: inline-block;
-            padding: 8px 14px;
-            margin-right: 8px;
-            background: #3a4050;
-            border: 1px solid #4a5060;
-            color: #a0a0a0;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-            transition: all 0.2s;
-        }
-        
-        .tab-btn.active {
-            background: #4A90E2;
-            border-color: #4A90E2;
-            color: #fff;
-        }
-        
-        .tab-btn:hover {
-            background: #4A90E2;
-            color: #fff;
-        }
-        
         .button {
             display: inline-block;
             padding: 8px 14px;
@@ -76,6 +52,7 @@
             border-radius: 4px;
             cursor: pointer;
             font-size: 12px;
+            margin-top: 12px;
         }
         
         .button:hover {
@@ -148,14 +125,8 @@
 <body>
     <div id="header">
         <h1>Bifrost Sovereign Memory Graph</h1>
-        <div class="subtitle">Interactive knowledge graph • 85 entities • 118 relationships</div>
-        <div style="margin-top: 15px;">
-            <button class="tab-btn active" onclick="filterNodes('all')">All</button>
-            <button class="tab-btn" onclick="filterNodes('person')">People</button>
-            <button class="tab-btn" onclick="filterNodes('meeting')">Meetings</button>
-            <button class="tab-btn" onclick="filterNodes('action_item')">Actions</button>
-            <button class="button" onclick="resetLayout()">Reset</button>
-        </div>
+        <div class="subtitle">Interactive mindmap • Bifrost at the center, radiating to all operations</div>
+        <button class="button" onclick="resetView()">Reset View</button>
     </div>
     
     <div id="cy"></div>
@@ -167,7 +138,7 @@
     
     <div class="info-box">
         <div>Nodes: <span class="info-value" id="nodeCount">0</span></div>
-        <div>Edges: <span class="info-value" id="edgeCount">0</span></div>
+        <div>Relations: <span class="info-value" id="edgeCount">0</span></div>
     </div>
 
     <script>
@@ -175,19 +146,18 @@
         let fullGraph = null;
         
         async function initGraph() {
-            // Load graph data
             const res = await fetch('graph-data.json');
             fullGraph = await res.json();
             
             document.getElementById('nodeCount').textContent = fullGraph.nodes.length;
             document.getElementById('edgeCount').textContent = fullGraph.edges.length;
             
-            renderGraph(fullGraph.nodes, fullGraph.edges);
+            renderMindmap();
         }
         
-        function renderGraph(nodes, edges) {
-            // Build Cytoscape elements
-            const cyNodes = nodes.map(n => ({
+        function renderMindmap() {
+            // Build hierarchical structure
+            const cyNodes = fullGraph.nodes.map(n => ({
                 data: {
                     id: n.id,
                     label: n.label,
@@ -197,12 +167,12 @@
                 },
                 style: {
                     'background-color': n.color,
-                    'width': Math.max(20, Math.min(50, n.size || 30)),
-                    'height': Math.max(20, Math.min(50, n.size || 30))
+                    'width': Math.max(30, Math.min(60, n.size || 30)),
+                    'height': Math.max(30, Math.min(60, n.size || 30))
                 }
             }));
             
-            const cyEdges = edges.map((e, i) => ({
+            const cyEdges = fullGraph.edges.map((e, i) => ({
                 data: {
                     id: `e${i}`,
                     source: e.source,
@@ -212,10 +182,8 @@
                 }
             }));
             
-            // Destroy old instance
             if (cy) cy.destroy();
             
-            // Create new instance
             cy = cytoscape({
                 container: document.getElementById('cy'),
                 elements: [...cyNodes, ...cyEdges],
@@ -230,7 +198,18 @@
                             'color': '#fff',
                             'border-width': '2px',
                             'border-color': '#fff',
-                            'cursor': 'pointer'
+                            'cursor': 'pointer',
+                            'text-wrap': 'wrap',
+                            'text-max-width': '80px'
+                        }
+                    },
+                    {
+                        selector: 'node[id="bifrost"]',
+                        style: {
+                            'width': 80,
+                            'height': 80,
+                            'font-size': '14px',
+                            'font-weight': 'bold'
                         }
                     },
                     {
@@ -238,7 +217,7 @@
                         style: {
                             'border-color': '#FFD700',
                             'border-width': '4px',
-                            'box-shadow': '0 0 10px #FFD700'
+                            'box-shadow': '0 0 15px #FFD700'
                         }
                     },
                     {
@@ -246,68 +225,68 @@
                         style: {
                             'line-color': '#4a5568',
                             'width': 'mapData(weight, 1, 3, 1, 2)',
-                            'opacity': '0.6',
-                            'curve-style': 'straight'
+                            'opacity': '0.5',
+                            'curve-style': 'straight',
+                            'target-arrow-shape': 'none'
+                        }
+                    },
+                    {
+                        selector: 'edge:selected',
+                        style: {
+                            'line-color': '#FFD700',
+                            'opacity': '1',
+                            'width': '3px'
                         }
                     }
                 ],
-                layout: {
-                    name: 'grid',
-                    rows: 1
-                },
                 wheelSensitivity: 0.1
             });
             
-            // Event handlers
             cy.on('tap', 'node', onNodeClick);
             cy.on('tap', onBackgroundClick);
             
-            // Run layout
-            resetLayout();
+            runMindmapLayout();
         }
         
-        function resetLayout() {
+        function runMindmapLayout() {
             if (!cy) return;
             
-            const nodeCount = cy.nodes().length;
-            const layoutName = nodeCount > 30 ? 'grid' : 'circle';
-            
             const layout = cy.layout({
-                name: layoutName,
+                name: 'concentric',
                 directed: false,
-                avoidOverlap: true,
-                nodeDimensionsIncludeLabels: true,
-                spacingFactor: 2,
+                roots: '#bifrost',
+                concentric: function(node) {
+                    // Bifrost at center (highest concentric level)
+                    if (node.id() === 'bifrost') return 10;
+                    
+                    // People and Business Functions next ring
+                    if (['person', 'business_function'].includes(node.data('type'))) return 9;
+                    
+                    // Meetings, Actions, Decisions next
+                    if (['meeting', 'action_item', 'decision'].includes(node.data('type'))) return 8;
+                    
+                    // Everything else outer
+                    return 7;
+                },
+                levelWidth: function(nodes) {
+                    return nodes.maxDegree() / 4;
+                },
                 animate: true,
                 animationDuration: 800,
                 fit: true,
                 padding: 100,
-                condense: true,
-                rows: nodeCount > 50 ? Math.ceil(Math.sqrt(nodeCount)) : undefined,
-                cols: nodeCount > 50 ? Math.ceil(Math.sqrt(nodeCount)) : undefined
+                startAngle: 3 / 2 * Math.PI,
+                clockwise: true,
+                equidistant: false
             });
             
             layout.run();
         }
         
-        function filterNodes(type) {
-            // Update button state
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            let nodes = fullGraph.nodes;
-            let edges = fullGraph.edges;
-            
-            if (type !== 'all') {
-                nodes = fullGraph.nodes.filter(n => n.type === type);
-                const nodeIds = new Set(nodes.map(n => n.id));
-                edges = fullGraph.edges.filter(e => nodeIds.has(e.source) && nodeIds.has(e.target));
+        function resetView() {
+            if (cy) {
+                cy.fit(null, 100);
             }
-            
-            document.getElementById('nodeCount').textContent = nodes.length;
-            document.getElementById('edgeCount').textContent = edges.length;
-            
-            renderGraph(nodes, edges);
         }
         
         function onNodeClick(e) {
@@ -319,7 +298,7 @@
             let html = `
                 <div class="sidebar-section">
                     <div class="sidebar-label">Type</div>
-                    <div class="sidebar-value">${node.type.replace(/_/g, ' ')}</div>
+                    <div class="sidebar-value" style="color: #4A90E2; font-weight: 600;">${node.type.replace(/_/g, ' ')}</div>
                 </div>
                 <div class="sidebar-section">
                     <div class="sidebar-label">Description</div>
@@ -327,23 +306,66 @@
                 </div>
             `;
             
-            // Add metadata
+            // Add metadata based on type
             if (node.type === 'person' && node.actionsOwned) {
                 html += `
                     <div class="sidebar-section">
-                        <div class="sidebar-label">Actions Owned</div>
-                        <div class="sidebar-value">${node.actionsOwned}</div>
+                        <div class="sidebar-label">Workload</div>
+                        <div class="sidebar-value">
+                            <strong>Actions:</strong> ${node.actionsOwned}<br>
+                            <strong>Active:</strong> ${node.lastActive || 'Unknown'}
+                        </div>
                     </div>
                 `;
-            } else if (node.type === 'action_item' && node.deadline) {
+            } else if (node.type === 'action_item') {
                 html += `
                     <div class="sidebar-section">
-                        <div class="sidebar-label">Deadline</div>
-                        <div class="sidebar-value">${node.deadline}</div>
+                        <div class="sidebar-label">Task Details</div>
+                        <div class="sidebar-value">
+                            <strong>Owner:</strong> ${node.owner || 'Unassigned'}<br>
+                            <strong>Due:</strong> ${node.deadline || 'No deadline'}<br>
+                            <strong>Status:</strong> ${node.status || 'Open'}
+                            ${node.isOverdue ? '<br><strong style="color: #C0392B;">⚠️ OVERDUE</strong>' : ''}
+                        </div>
                     </div>
+                `;
+            } else if (node.type === 'business_function') {
+                html += `
                     <div class="sidebar-section">
-                        <div class="sidebar-label">Status</div>
-                        <div class="sidebar-value">${node.status || 'Open'}</div>
+                        <div class="sidebar-label">Workstream</div>
+                        <div class="sidebar-value">
+                            <strong>Owner:</strong> ${node.owner || 'TBD'}
+                        </div>
+                    </div>
+                `;
+            } else if (node.type === 'meeting') {
+                html += `
+                    <div class="sidebar-section">
+                        <div class="sidebar-label">Meeting</div>
+                        <div class="sidebar-value">
+                            <strong>Frequency:</strong> ${node.frequency || 'Recurring'}<br>
+                            <strong>Type:</strong> Team sync
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Show connected nodes
+            const connectedEdges = fullGraph.edges.filter(e => e.source === node.id || e.target === node.id);
+            if (connectedEdges.length > 0) {
+                html += `
+                    <div class="sidebar-section">
+                        <div class="sidebar-label">Connected (${connectedEdges.length})</div>
+                        <div class="sidebar-value" style="font-size: 12px;">
+                            ${connectedEdges.map(e => {
+                                const relId = e.source === node.id ? e.target : e.source;
+                                const relNode = fullGraph.nodes.find(n => n.id === relId);
+                                return relNode ? `<div style="margin-bottom: 8px;">
+                                    <strong>${e.relation}:</strong><br>
+                                    ${relNode.label}
+                                </div>` : '';
+                            }).join('')}
+                        </div>
                     </div>
                 `;
             }
@@ -358,7 +380,6 @@
             }
         }
         
-        // Init on load
         window.addEventListener('load', initGraph);
     </script>
 </body>
