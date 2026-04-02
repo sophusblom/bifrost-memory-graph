@@ -269,34 +269,25 @@
         function resetLayout() {
             if (!cy) return;
             
-            // Use fruchterman layout (better spread)
+            const nodeCount = cy.nodes().length;
+            const layoutName = nodeCount > 30 ? 'grid' : 'circle';
+            
             const layout = cy.layout({
-                name: 'grid',
+                name: layoutName,
                 directed: false,
                 avoidOverlap: true,
                 nodeDimensionsIncludeLabels: true,
-                spacingFactor: 1.5,
+                spacingFactor: 2,
                 animate: true,
-                animationDuration: 500,
+                animationDuration: 800,
                 fit: true,
-                padding: 50
+                padding: 100,
+                condense: true,
+                rows: nodeCount > 50 ? Math.ceil(Math.sqrt(nodeCount)) : undefined,
+                cols: nodeCount > 50 ? Math.ceil(Math.sqrt(nodeCount)) : undefined
             });
             
             layout.run();
-            
-            // Then switch to better layout
-            setTimeout(() => {
-                const betterLayout = cy.layout({
-                    name: 'breadthFirstSearch',
-                    directed: false,
-                    roots: cy.nodes()[0],
-                    animate: true,
-                    animationDuration: 500,
-                    fit: true,
-                    padding: 50
-                });
-                betterLayout.run();
-            }, 600);
         }
         
         function filterNodes(type) {
