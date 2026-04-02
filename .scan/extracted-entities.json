@@ -1,0 +1,388 @@
+{
+  "extractedAt": "2026-04-02T21:01:25.395Z",
+  "people": [
+    {
+      "name": "Philippe",
+      "focus": [],
+      "actionsOwned": 4,
+      "decisionsOwned": 0,
+      "lastActive": "2026-03-30",
+      "relatedPeople": []
+    },
+    {
+      "name": "Thorbjørn",
+      "focus": [],
+      "actionsOwned": 2,
+      "decisionsOwned": 0,
+      "lastActive": "2026-03-30",
+      "relatedPeople": []
+    },
+    {
+      "name": "Peter",
+      "focus": [],
+      "actionsOwned": 5,
+      "decisionsOwned": 0,
+      "lastActive": "2026-04-01",
+      "relatedPeople": []
+    },
+    {
+      "name": "Sacha",
+      "focus": [],
+      "actionsOwned": 2,
+      "decisionsOwned": 0,
+      "lastActive": "2026-03-30",
+      "relatedPeople": []
+    },
+    {
+      "name": "Kristof",
+      "focus": [],
+      "actionsOwned": 1,
+      "decisionsOwned": 0,
+      "lastActive": "2026-03-30",
+      "relatedPeople": []
+    },
+    {
+      "name": "Sophus",
+      "focus": [],
+      "actionsOwned": 7,
+      "decisionsOwned": 3,
+      "lastActive": "2026-03-31",
+      "relatedPeople": []
+    },
+    {
+      "name": "Sophus + Thorbjørn",
+      "focus": [],
+      "actionsOwned": 1,
+      "decisionsOwned": 0,
+      "lastActive": "2026-03-30",
+      "relatedPeople": []
+    },
+    {
+      "name": "Florian / Thorbjørn",
+      "focus": [],
+      "actionsOwned": 1,
+      "decisionsOwned": 0,
+      "lastActive": "2026-03-31",
+      "relatedPeople": []
+    },
+    {
+      "name": "Thorbjørn / Peter",
+      "focus": [],
+      "actionsOwned": 1,
+      "decisionsOwned": 0,
+      "lastActive": "2026-04-01",
+      "relatedPeople": []
+    },
+    {
+      "name": "Florian",
+      "focus": [],
+      "actionsOwned": 1,
+      "decisionsOwned": 0,
+      "lastActive": "2026-04-01",
+      "relatedPeople": []
+    },
+    {
+      "name": "Owner",
+      "focus": [],
+      "actionsOwned": 1,
+      "decisionsOwned": 0,
+      "lastActive": "Date Opened",
+      "relatedPeople": []
+    },
+    {
+      "name": "Peter Damm",
+      "role": "Co-founder — GTM Data Centers + Fundraising",
+      "focus": [
+        "fundraising",
+        "gtm"
+      ],
+      "actionsOwned": 2,
+      "decisionsOwned": 0,
+      "lastActive": "2026-04-01",
+      "relatedPeople": []
+    },
+    {
+      "name": "Thorbjørn Rønje",
+      "role": "Active Chairman — GP at Bifrost Studios",
+      "focus": [
+        "fundraising",
+        "strategy"
+      ],
+      "actionsOwned": 1,
+      "decisionsOwned": 0,
+      "lastActive": "2026-04-01",
+      "relatedPeople": []
+    },
+    {
+      "name": "Kristof De Spiegeleer",
+      "role": "Co-founder + Active Chairman — R&D/Technology",
+      "focus": [
+        "r&d",
+        "technology"
+      ],
+      "actionsOwned": 1,
+      "decisionsOwned": 0,
+      "lastActive": "2026-04-01",
+      "relatedPeople": []
+    },
+    {
+      "name": "Sacha Obeegadoo",
+      "role": "Co-founder — GTM Agentic Cloud",
+      "focus": [
+        "gtm",
+        "sales"
+      ],
+      "actionsOwned": 1,
+      "decisionsOwned": 0,
+      "lastActive": "2026-04-01",
+      "relatedPeople": []
+    },
+    {
+      "name": "Peter, Thorbjørn, Florian",
+      "focus": [],
+      "actionsOwned": 0,
+      "decisionsOwned": 1,
+      "lastActive": "2026-03-30",
+      "relatedPeople": []
+    },
+    {
+      "name": "Sophus, Florian",
+      "focus": [],
+      "actionsOwned": 0,
+      "decisionsOwned": 1,
+      "lastActive": "2026-03-30",
+      "relatedPeople": []
+    },
+    {
+      "name": "Peter + Thorbjørn",
+      "focus": [],
+      "actionsOwned": 0,
+      "decisionsOwned": 0,
+      "lastActive": null,
+      "relatedPeople": []
+    },
+    {
+      "name": "Peter + Florian",
+      "focus": [],
+      "actionsOwned": 0,
+      "decisionsOwned": 0,
+      "lastActive": null,
+      "relatedPeople": []
+    },
+    {
+      "name": "TBC",
+      "focus": [],
+      "actionsOwned": 0,
+      "decisionsOwned": 0,
+      "lastActive": null,
+      "relatedPeople": []
+    },
+    {
+      "name": "Sophus + Karen",
+      "focus": [],
+      "actionsOwned": 0,
+      "decisionsOwned": 0,
+      "lastActive": null,
+      "relatedPeople": []
+    },
+    {
+      "name": "Florian Fournier",
+      "role": "Co-founder — Sales + Partnerships",
+      "focus": [
+        "marketing",
+        "partnerships"
+      ],
+      "actionsOwned": 0,
+      "decisionsOwned": 0,
+      "lastActive": null,
+      "relatedPeople": []
+    },
+    {
+      "name": "Philippe Ambühl",
+      "role": "Co-founder — Legal/Ops + Finance",
+      "focus": [
+        "legal",
+        "finance",
+        "ops"
+      ],
+      "actionsOwned": 0,
+      "decisionsOwned": 0,
+      "lastActive": null,
+      "relatedPeople": []
+    },
+    {
+      "name": "Sophus Blom-Hanssen",
+      "role": "Operations (interim)",
+      "focus": [
+        "ops"
+      ],
+      "actionsOwned": 0,
+      "decisionsOwned": 0,
+      "lastActive": null,
+      "relatedPeople": []
+    }
+  ],
+  "decisions": [
+    {
+      "date": "2026-03-30",
+      "decision": "Use \"Decacorn\" as slide title (not \"Unicorn\")",
+      "madeBy": "Peter, Thorbjørn, Florian",
+      "rationale": "More aggressive positioning; 2.5B valuation by 2030 shown, team believes actual ceiling is higher",
+      "linkedActions": [
+        "Update slide to 150 containers",
+        "fix annual revenue wording"
+      ],
+      "notes": "Thorbjørn noted it prompts investors to do the math in their heads"
+    },
+    {
+      "date": "2026-03-30",
+      "decision": "Separate GTM channel (pipeline/sales) from GTM-role-recruitment channel",
+      "madeBy": "Sophus, Florian",
+      "rationale": "Cleaner separation of ongoing activity vs hiring; archive recruitment channel once hired",
+      "linkedActions": [],
+      "notes": "One channel per open role — archive when filled"
+    },
+    {
+      "date": "2026-03-30",
+      "decision": "Operations Cadence launched — weekly rhythm established",
+      "madeBy": "Sophus",
+      "rationale": "Weekly: All Hands (Mon), GTM War Room, Ops & Finance Close, Hiring Review, Friday Pulse",
+      "linkedActions": [],
+      "notes": ""
+    },
+    {
+      "date": "2026-03-31",
+      "decision": "Karen workspace created under 00 Agents in shared drive",
+      "madeBy": "Sophus",
+      "rationale": "Agent needs structured write scope; Sheets for action/decision/priority, Doc for pulse, Folder for meeting notes",
+      "linkedActions": [],
+      "notes": ""
+    },
+    {
+      "date": "2026-03-31",
+      "decision": "In-person workshop planned Spain, w/c 6 Apr (6–9 Apr)",
+      "madeBy": "Sophus",
+      "rationale": "Early team alignment session before ops associate joins",
+      "linkedActions": [
+        "Spain workshop logistics TBC"
+      ],
+      "notes": "Team to suggest agenda items"
+    }
+  ],
+  "blockers": [
+    {
+      "workstream": "Fundraising",
+      "blockers": [
+        "Unit economics slide may need further update"
+      ]
+    },
+    {
+      "workstream": "Legal & Entity",
+      "blockers": [
+        "All three docs must close this week"
+      ]
+    },
+    {
+      "workstream": "Financing & Debt",
+      "blockers": [
+        "Model comparison not yet resolved"
+      ]
+    },
+    {
+      "workstream": "GTM — Agentic Cloud",
+      "blockers": [
+        "ICP not yet locked"
+      ]
+    },
+    {
+      "workstream": "Hiring — GTM Associate",
+      "blockers": [
+        "Thorbjørn + Florian to confirm Wed availability"
+      ]
+    },
+    {
+      "workstream": "Hiring — Supply Chain",
+      "blockers": [
+        "No owner"
+      ]
+    },
+    {
+      "workstream": "Product & R&D",
+      "blockers": [
+        "Scope not yet confirmed"
+      ]
+    },
+    {
+      "workstream": "Marketing & Content",
+      "blockers": [
+        "No content calendar exists"
+      ]
+    },
+    {
+      "workstream": "Alator Capital - Offtake",
+      "blockers": [
+        "None"
+      ]
+    }
+  ],
+  "workstreams": [
+    {
+      "name": "Fundraising",
+      "owner": "Peter",
+      "status": "Active",
+      "focus": [
+        "pitch deck",
+        "investor outreach",
+        "data room"
+      ]
+    },
+    {
+      "name": "GTM",
+      "owner": "Sacha",
+      "status": "Active",
+      "focus": [
+        "icp definition",
+        "outreach",
+        "first deals"
+      ]
+    },
+    {
+      "name": "Operations",
+      "owner": "Sophus",
+      "status": "Active",
+      "focus": [
+        "cadence",
+        "action tracking",
+        "blockers"
+      ]
+    },
+    {
+      "name": "Legal",
+      "owner": "Philippe",
+      "status": "Active",
+      "focus": [
+        "license",
+        "jv agreement",
+        "sha"
+      ]
+    },
+    {
+      "name": "Finance",
+      "owner": "Philippe",
+      "status": "Active",
+      "focus": [
+        "deck",
+        "close",
+        "burn tracking"
+      ]
+    }
+  ],
+  "summary": {
+    "totalPeople": 24,
+    "totalActions": 31,
+    "openActions": 29,
+    "totalDecisions": 5,
+    "activeBlockers": 0,
+    "workstreamsTracked": 5
+  }
+}

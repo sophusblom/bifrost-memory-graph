@@ -1,0 +1,198 @@
+{
+  "totalFiles": 18,
+  "timestamp": "2026-04-02T21:00:48.067Z",
+  "files": [
+    {
+      "id": "13XxMkh-Q1_XGbr7fObPkyAWfBDJOtPrcL1tLY7np6gs",
+      "name": "2026-03-30_bifrost-sovereign-crm",
+      "mimeType": "application/vnd.google-apps.spreadsheet",
+      "webViewLink": "https://docs.google.com/spreadsheets/d/13XxMkh-Q1_XGbr7fObPkyAWfBDJOtPrcL1tLY7np6gs/edit?usp=drivesdk",
+      "createdTime": "2026-04-02T10:24:42.965Z",
+      "modifiedTime": "2026-04-02T15:07:50.367Z",
+      "size": "19864",
+      "parentFolder": "03 - GTM",
+      "parentId": "1AItD6z9eHuSaOB5gbPPR3SL1Y2JT-rn2"
+    },
+    {
+      "id": "1cWFmrZrkQut5KMkqILoQvN37SczanLzq3yxlBZsbHvo",
+      "name": "Priority Map",
+      "mimeType": "application/vnd.google-apps.spreadsheet",
+      "webViewLink": "https://docs.google.com/spreadsheets/d/1cWFmrZrkQut5KMkqILoQvN37SczanLzq3yxlBZsbHvo/edit?usp=drivesdk",
+      "createdTime": "2026-03-31T12:26:21.789Z",
+      "modifiedTime": "2026-04-02T10:02:43.510Z",
+      "size": "2264",
+      "parentFolder": "Karen",
+      "parentId": "1K1HrtILA1znuwa54mxqQ6wog_KiaQUCO"
+    },
+    {
+      "id": "1sXnitP82-_cAV1hQf-GNBg4QAuCZl1dxOz4VyHvCb2c",
+      "name": "Prospera_La_Ceiba_Strategic_Summary.md",
+      "mimeType": "application/vnd.google-apps.document",
+      "webViewLink": "https://docs.google.com/document/d/1sXnitP82-_cAV1hQf-GNBg4QAuCZl1dxOz4VyHvCb2c/edit?usp=drivesdk",
+      "createdTime": "2026-04-02T09:25:16.459Z",
+      "modifiedTime": "2026-04-02T09:25:19.013Z",
+      "size": "3049",
+      "parentFolder": "03 - GTM",
+      "parentId": "1AItD6z9eHuSaOB5gbPPR3SL1Y2JT-rn2"
+    },
+    {
+      "id": "1LVVxwCcn9X2e1aIDko92QT-MbaJFzBFG",
+      "name": "Prospera_La_Ceiba_Conversation.pdf",
+      "mimeType": "application/pdf",
+      "webViewLink": "https://drive.google.com/file/d/1LVVxwCcn9X2e1aIDko92QT-MbaJFzBFG/view?usp=drivesdk",
+      "createdTime": "2026-04-02T09:25:09.469Z",
+      "modifiedTime": "2026-04-02T09:25:09.469Z",
+      "size": "8544",
+      "parentFolder": "03 - GTM",
+      "parentId": "1AItD6z9eHuSaOB5gbPPR3SL1Y2JT-rn2"
+    },
+    {
+      "id": "1ZumiQJA8HuLnarbk12S4gPVHdSpwFqLQ",
+      "name": "Prospera_La_Ceiba_Strategic_Summary.md",
+      "mimeType": "text/markdown",
+      "webViewLink": "https://drive.google.com/file/d/1ZumiQJA8HuLnarbk12S4gPVHdSpwFqLQ/view?usp=drivesdk",
+      "createdTime": "2026-04-02T09:24:20.530Z",
+      "modifiedTime": "2026-04-02T09:24:20.530Z",
+      "size": "1859",
+      "parentFolder": "03 - GTM",
+      "parentId": "1AItD6z9eHuSaOB5gbPPR3SL1Y2JT-rn2"
+    },
+    {
+      "id": "1DTiKxy6-6iJx5GR_U4Tbqb8ASN3b_SLS_VMEhohpgfo",
+      "name": "Action Log",
+      "mimeType": "application/vnd.google-apps.spreadsheet",
+      "webViewLink": "https://docs.google.com/spreadsheets/d/1DTiKxy6-6iJx5GR_U4Tbqb8ASN3b_SLS_VMEhohpgfo/edit?usp=drivesdk",
+      "createdTime": "2026-03-31T12:26:18.792Z",
+      "modifiedTime": "2026-04-01T23:21:02.579Z",
+      "size": "2178",
+      "parentFolder": "Karen",
+      "parentId": "1K1HrtILA1znuwa54mxqQ6wog_KiaQUCO"
+    },
+    {
+      "id": "18RYDLgwdj9qt9qlJiD5Wo8fEY9h_tT9W_bT15XO9mlw",
+      "name": "GTM Candidate - Eoin - Call Summary - 2026-04-01",
+      "mimeType": "application/vnd.google-apps.document",
+      "webViewLink": "https://docs.google.com/document/d/18RYDLgwdj9qt9qlJiD5Wo8fEY9h_tT9W_bT15XO9mlw/edit?usp=drivesdk",
+      "createdTime": "2026-04-01T17:14:45.518Z",
+      "modifiedTime": "2026-04-01T17:44:15.850Z",
+      "size": "5265",
+      "parentFolder": "GTM Role - Candidate Files",
+      "parentId": "1sKtAu9eWp4-ayVVCR4uJjD9RnnCEiLln"
+    },
+    {
+      "id": "1iw7EM_IK0yFGh-JAITRQPqD3EGtMR-d1",
+      "name": "2026-04-01_gtm-associate-scorecard.xlsx",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "webViewLink": "https://docs.google.com/spreadsheets/d/1iw7EM_IK0yFGh-JAITRQPqD3EGtMR-d1/edit?usp=drivesdk&ouid=109184400325224469564&rtpof=true&sd=true",
+      "createdTime": "2026-04-01T17:35:42.485Z",
+      "modifiedTime": "2026-04-01T17:42:40.139Z",
+      "size": "11012",
+      "parentFolder": "GTM Role - Candidate Files",
+      "parentId": "1sKtAu9eWp4-ayVVCR4uJjD9RnnCEiLln"
+    },
+    {
+      "id": "1sKtAu9eWp4-ayVVCR4uJjD9RnnCEiLln",
+      "name": "GTM Role - Candidate Files",
+      "mimeType": "application/vnd.google-apps.folder",
+      "webViewLink": "https://drive.google.com/drive/folders/1sKtAu9eWp4-ayVVCR4uJjD9RnnCEiLln",
+      "createdTime": "2026-04-01T17:14:44.824Z",
+      "modifiedTime": "2026-04-01T17:41:34.771Z",
+      "parentFolder": "08 - Hiring",
+      "parentId": "1yt0K0BgauVPHgzNtS4pWy4PbmcyJ2EGM"
+    },
+    {
+      "id": "1m2p34eqF_0jRvs8suMB6kwCdHrkzUR_j",
+      "name": "Eoin_OKane_Interview_Brief.docx",
+      "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "webViewLink": "https://docs.google.com/document/d/1m2p34eqF_0jRvs8suMB6kwCdHrkzUR_j/edit?usp=drivesdk&ouid=109184400325224469564&rtpof=true&sd=true",
+      "createdTime": "2026-04-01T11:40:33.793Z",
+      "modifiedTime": "2026-04-01T11:40:33.794Z",
+      "size": "11473",
+      "parentFolder": "GTM Role - Candidate Files",
+      "parentId": "1sKtAu9eWp4-ayVVCR4uJjD9RnnCEiLln"
+    },
+    {
+      "id": "1hsXTVekfzWcyp7hX0vLVwF4t6x1-R1ac",
+      "name": "2026-04-01_icp-interview-questionnaire copy.pdf",
+      "mimeType": "application/pdf",
+      "webViewLink": "https://drive.google.com/file/d/1hsXTVekfzWcyp7hX0vLVwF4t6x1-R1ac/view?usp=drivesdk",
+      "createdTime": "2026-04-01T09:16:17.392Z",
+      "modifiedTime": "2026-04-01T09:10:43.000Z",
+      "size": "7258",
+      "parentFolder": "03 - GTM",
+      "parentId": "1AItD6z9eHuSaOB5gbPPR3SL1Y2JT-rn2"
+    },
+    {
+      "id": "1YYrVBVFjChaeHzjJczu4ROBJ1FdoZLNuO80ndUIgZVU",
+      "name": "Weekly Ops Pulse",
+      "mimeType": "application/vnd.google-apps.document",
+      "webViewLink": "https://docs.google.com/document/d/1YYrVBVFjChaeHzjJczu4ROBJ1FdoZLNuO80ndUIgZVU/edit?usp=drivesdk",
+      "createdTime": "2026-03-31T12:23:26.171Z",
+      "modifiedTime": "2026-03-31T12:33:25.397Z",
+      "size": "2573",
+      "parentFolder": "Karen",
+      "parentId": "1K1HrtILA1znuwa54mxqQ6wog_KiaQUCO"
+    },
+    {
+      "id": "1UBbgdo2cEDQoI0SMmD5lyrWqiC6KADLuiGlApimb0VM",
+      "name": "Decision Log",
+      "mimeType": "application/vnd.google-apps.spreadsheet",
+      "webViewLink": "https://docs.google.com/spreadsheets/d/1UBbgdo2cEDQoI0SMmD5lyrWqiC6KADLuiGlApimb0VM/edit?usp=drivesdk",
+      "createdTime": "2026-03-31T12:26:20.213Z",
+      "modifiedTime": "2026-03-31T12:33:07.564Z",
+      "size": "1024",
+      "parentFolder": "Karen",
+      "parentId": "1K1HrtILA1znuwa54mxqQ6wog_KiaQUCO"
+    },
+    {
+      "id": "1DKdpldPlAA1kYDNx-ofSQOUQfXdZq0r0",
+      "name": "Karen",
+      "mimeType": "application/vnd.google-apps.folder",
+      "webViewLink": "https://drive.google.com/drive/folders/1DKdpldPlAA1kYDNx-ofSQOUQfXdZq0r0",
+      "createdTime": "2026-03-31T11:00:04.390Z",
+      "modifiedTime": "2026-03-31T11:30:33.093Z",
+      "parentFolder": "00 - Agents",
+      "parentId": "1Zm4BmmR0dPMN9bQpe2dLx-vnkLUQ-UjS"
+    },
+    {
+      "id": "1rzHfwGH8LdyowdajkvQ8r7lrM9dMRaxZ",
+      "name": "Meeting Notes",
+      "mimeType": "application/vnd.google-apps.folder",
+      "webViewLink": "https://drive.google.com/drive/folders/1rzHfwGH8LdyowdajkvQ8r7lrM9dMRaxZ",
+      "createdTime": "2026-03-31T11:30:13.331Z",
+      "modifiedTime": "2026-03-31T11:30:13.331Z",
+      "parentFolder": "Karen",
+      "parentId": "1K1HrtILA1znuwa54mxqQ6wog_KiaQUCO"
+    },
+    {
+      "id": "1K1HrtILA1znuwa54mxqQ6wog_KiaQUCO",
+      "name": "Karen",
+      "mimeType": "application/vnd.google-apps.folder",
+      "webViewLink": "https://drive.google.com/drive/folders/1K1HrtILA1znuwa54mxqQ6wog_KiaQUCO",
+      "createdTime": "2026-03-31T11:30:03.987Z",
+      "modifiedTime": "2026-03-31T11:30:03.987Z",
+      "parentFolder": "Karen",
+      "parentId": "1DKdpldPlAA1kYDNx-ofSQOUQfXdZq0r0"
+    },
+    {
+      "id": "1YSlR7gMgIDK9kVekwZpwfKU3Bb5LcojW",
+      "name": "Data Room",
+      "mimeType": "application/vnd.google-apps.folder",
+      "webViewLink": "https://drive.google.com/drive/folders/1YSlR7gMgIDK9kVekwZpwfKU3Bb5LcojW",
+      "createdTime": "2026-03-31T11:25:19.412Z",
+      "modifiedTime": "2026-03-31T11:26:21.208Z",
+      "parentFolder": "02 - Fundraising & Investors",
+      "parentId": "1aLJ9sFmR9jAIROJIa_ojYwIVSQ9SPL3j"
+    },
+    {
+      "id": "1kkHiiLzW7ukBR7z1-0QSAZEPI4j3_dSY",
+      "name": "Bifrost Sovereign — Data Room",
+      "mimeType": "application/vnd.google-apps.shortcut",
+      "webViewLink": "https://drive.google.com/file/d/1kkHiiLzW7ukBR7z1-0QSAZEPI4j3_dSY/view?usp=drivesdk",
+      "createdTime": "2026-03-31T11:26:14.101Z",
+      "modifiedTime": "2026-03-31T11:26:14.101Z",
+      "parentFolder": "Data Room",
+      "parentId": "1YSlR7gMgIDK9kVekwZpwfKU3Bb5LcojW"
+    }
+  ]
+}

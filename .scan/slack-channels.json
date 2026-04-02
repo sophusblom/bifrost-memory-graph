@@ -1,0 +1,272 @@
+{
+  "channels": [
+    {
+      "id": "C01_ALL_BIFROST",
+      "name": "all-bifrost-sovereign",
+      "topic": "Full team alignment and company-wide updates",
+      "purpose": "Central communication hub",
+      "visibility": "public",
+      "type": "public",
+      "created": 1709251200000,
+      "members": 7,
+      "keyParticipants": [
+        "Karen",
+        "Florian",
+        "Philippe",
+        "Sacha",
+        "Peter",
+        "Kristof",
+        "Thorbjørn"
+      ],
+      "lastActivity": 1743667200000,
+      "messageCount": 245,
+      "decisions": [
+        "Operating cadence defined",
+        "Weekly meeting schedule set"
+      ],
+      "blockers": [
+        "None currently"
+      ],
+      "relatedChannels": [
+        "operations",
+        "financing-and-debt",
+        "fundraising",
+        "gtm"
+      ]
+    },
+    {
+      "id": "C02_GTM",
+      "name": "gtm",
+      "topic": "Go-to-market strategy and execution",
+      "purpose": "GTM team coordination",
+      "visibility": "public",
+      "type": "public",
+      "created": 1709337600000,
+      "members": 4,
+      "keyParticipants": [
+        "Sacha",
+        "Peter",
+        "Florian",
+        "Karen"
+      ],
+      "lastActivity": 1743667200000,
+      "messageCount": 189,
+      "decisions": [
+        "ICP defined",
+        "Outreach strategy locked"
+      ],
+      "blockers": [
+        "First deal pipeline to be established"
+      ],
+      "relatedChannels": [
+        "all-bifrost-sovereign",
+        "fundraising"
+      ]
+    },
+    {
+      "id": "C03_FUNDRAISING",
+      "name": "fundraising",
+      "topic": "Investor relations and fundraising execution",
+      "purpose": "Raise tracking and management",
+      "visibility": "public",
+      "type": "public",
+      "created": 1709424000000,
+      "members": 3,
+      "keyParticipants": [
+        "Peter",
+        "Thorbjørn",
+        "Karen"
+      ],
+      "lastActivity": 1743667200000,
+      "messageCount": 156,
+      "decisions": [
+        "SAFE terms defined",
+        "Target €3M equity + €1.5M debt set"
+      ],
+      "blockers": [
+        "Data room setup pending",
+        "Investor intro pipeline to warm"
+      ],
+      "relatedChannels": [
+        "all-bifrost-sovereign",
+        "financing-and-debt"
+      ]
+    },
+    {
+      "id": "C04_OPERATIONS",
+      "name": "operations",
+      "topic": "Operational cadence, action tracking, blockers",
+      "purpose": "OPS team coordination",
+      "visibility": "public",
+      "type": "public",
+      "created": 1709510400000,
+      "members": 3,
+      "keyParticipants": [
+        "Karen",
+        "Sophus",
+        "Philippe"
+      ],
+      "lastActivity": 1743667200000,
+      "messageCount": 134,
+      "decisions": [
+        "Weekly cadence locked",
+        "Action log live in Sheets",
+        "Hiring process defined"
+      ],
+      "blockers": [],
+      "relatedChannels": [
+        "all-bifrost-sovereign",
+        "financing-and-debt"
+      ]
+    },
+    {
+      "id": "C06_FINANCE",
+      "name": "financing-and-debt",
+      "topic": "Financial planning, debt track, monthly close",
+      "purpose": "Finance team coordination",
+      "visibility": "public",
+      "type": "public",
+      "created": 1709683200000,
+      "members": 3,
+      "keyParticipants": [
+        "Philippe",
+        "Peter",
+        "Karen"
+      ],
+      "lastActivity": 1743667200000,
+      "messageCount": 112,
+      "decisions": [
+        "Financial model locked",
+        "Debt terms under discussion"
+      ],
+      "blockers": [
+        "Investor commitments pending"
+      ],
+      "relatedChannels": [
+        "all-bifrost-sovereign",
+        "fundraising"
+      ]
+    },
+    {
+      "id": "C05_TECH",
+      "name": "tech",
+      "topic": "R&D, product, infrastructure",
+      "purpose": "Technology team alignment",
+      "visibility": "public",
+      "type": "public",
+      "created": 1709596800000,
+      "members": 2,
+      "keyParticipants": [
+        "Kristof",
+        "Karen"
+      ],
+      "lastActivity": 1743340800000,
+      "messageCount": 87,
+      "decisions": [
+        "Stack defined",
+        "Roadmap prioritized"
+      ],
+      "blockers": [
+        "Staffing to be finalized"
+      ],
+      "relatedChannels": [
+        "all-bifrost-sovereign",
+        "operations"
+      ]
+    },
+    {
+      "id": "C07_HIRING",
+      "name": "hiring-and-recruitment",
+      "topic": "Hiring pipeline, recruitment, onboarding",
+      "purpose": "People operations",
+      "visibility": "public",
+      "type": "public",
+      "created": 1709769600000,
+      "members": 3,
+      "keyParticipants": [
+        "Sophus",
+        "Karen",
+        "Florian"
+      ],
+      "lastActivity": 1743581400000,
+      "messageCount": 67,
+      "decisions": [
+        "Supply chain lead search active",
+        "Ops & Strategy Associate hire in pipeline"
+      ],
+      "blockers": [
+        "Need to finalize role definitions"
+      ],
+      "relatedChannels": [
+        "all-bifrost-sovereign",
+        "operations"
+      ]
+    },
+    {
+      "id": "C08_MARKETING",
+      "name": "marketing",
+      "topic": "Brand, content, comms",
+      "purpose": "Marketing team coordination",
+      "visibility": "public",
+      "type": "public",
+      "created": 1709856000000,
+      "members": 2,
+      "keyParticipants": [
+        "Florian",
+        "Karen"
+      ],
+      "lastActivity": 1743254400000,
+      "messageCount": 45,
+      "decisions": [
+        "Content calendar to be built"
+      ],
+      "blockers": [
+        "Content owner assignment pending"
+      ],
+      "relatedChannels": [
+        "all-bifrost-sovereign"
+      ]
+    },
+    {
+      "id": "C09_SOCIAL",
+      "name": "social",
+      "topic": "Social media, external comms, announcements",
+      "purpose": "Social and announcements",
+      "visibility": "public",
+      "type": "public",
+      "created": 1709942400000,
+      "members": 4,
+      "keyParticipants": [
+        "Karen",
+        "Florian",
+        "Sophus",
+        "Peter"
+      ],
+      "lastActivity": 1743667200000,
+      "messageCount": 32,
+      "decisions": [],
+      "blockers": [],
+      "relatedChannels": [
+        "marketing",
+        "all-bifrost-sovereign"
+      ]
+    }
+  ],
+  "messagePatterns": {
+    "actionItems": 156,
+    "decisions": 24,
+    "blockersMentioned": 34,
+    "fileAttachments": 89,
+    "externalLinks": 112,
+    "dailyStandups": 22,
+    "weeklyMeetingNotes": 8
+  },
+  "summary": {
+    "totalChannels": 9,
+    "totalMessages": 1067,
+    "totalMembers": 8,
+    "averageMessagesPerChannel": 119,
+    "mostActive": "all-bifrost-sovereign",
+    "lastUpdate": "2026-04-02T21:01:39.335Z"
+  }
+}

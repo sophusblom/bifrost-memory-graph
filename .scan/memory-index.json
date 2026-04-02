@@ -1,0 +1,292 @@
+{
+  "scannedAt": "2026-04-02T21:02:33.413Z",
+  "sources": {
+    "slackChannels": 9,
+    "googleSheets": 3,
+    "googleDriveFolders": 15,
+    "googleDriveFiles": 18
+  },
+  "teamMembers": 24,
+  "keyMetrics": {
+    "openActions": 29,
+    "totalActions": 31,
+    "decisions": 5,
+    "activeBlockers": 9,
+    "workstreams": 5
+  },
+  "topPeople": [
+    {
+      "person": "Sophus",
+      "activityCount": 12
+    },
+    {
+      "person": "Peter",
+      "activityCount": 5
+    },
+    {
+      "person": "Philippe",
+      "activityCount": 4
+    },
+    {
+      "person": "Thorbjørn",
+      "activityCount": 2
+    },
+    {
+      "person": "Sacha",
+      "activityCount": 2
+    }
+  ],
+  "activeBlockers": [
+    {
+      "workstream": "Fundraising",
+      "blockers": [
+        "Unit economics slide may need further update"
+      ]
+    },
+    {
+      "workstream": "Legal & Entity",
+      "blockers": [
+        "All three docs must close this week"
+      ]
+    },
+    {
+      "workstream": "Financing & Debt",
+      "blockers": [
+        "Model comparison not yet resolved"
+      ]
+    },
+    {
+      "workstream": "GTM — Agentic Cloud",
+      "blockers": [
+        "ICP not yet locked"
+      ]
+    },
+    {
+      "workstream": "Hiring — GTM Associate",
+      "blockers": [
+        "Thorbjørn + Florian to confirm Wed availability"
+      ]
+    },
+    {
+      "workstream": "Hiring — Supply Chain",
+      "blockers": [
+        "No owner"
+      ]
+    },
+    {
+      "workstream": "Product & R&D",
+      "blockers": [
+        "Scope not yet confirmed"
+      ]
+    },
+    {
+      "workstream": "Marketing & Content",
+      "blockers": [
+        "No content calendar exists"
+      ]
+    },
+    {
+      "workstream": "Alator Capital - Offtake",
+      "blockers": [
+        "None"
+      ]
+    }
+  ],
+  "recentDecisions": [
+    {
+      "date": "2026-03-31",
+      "decision": "In-person workshop planned Spain, w/c 6 Apr (6–9 Apr)",
+      "madeBy": "Sophus",
+      "rationale": "Early team alignment session before ops associate joins",
+      "linkedActions": "Spain workshop logistics TBC",
+      "notes": "Team to suggest agenda items"
+    },
+    {
+      "date": "2026-03-31",
+      "decision": "Karen workspace created under 00 Agents in shared drive",
+      "madeBy": "Sophus",
+      "rationale": "Agent needs structured write scope; Sheets for action/decision/priority, Doc for pulse, Folder for meeting notes",
+      "linkedActions": "",
+      "notes": ""
+    },
+    {
+      "date": "2026-03-30",
+      "decision": "Operations Cadence launched — weekly rhythm established",
+      "madeBy": "Sophus",
+      "rationale": "Weekly: All Hands (Mon), GTM War Room, Ops & Finance Close, Hiring Review, Friday Pulse",
+      "linkedActions": "",
+      "notes": ""
+    },
+    {
+      "date": "2026-03-30",
+      "decision": "Separate GTM channel (pipeline/sales) from GTM-role-recruitment channel",
+      "madeBy": "Sophus, Florian",
+      "rationale": "Cleaner separation of ongoing activity vs hiring; archive recruitment channel once hired",
+      "linkedActions": "",
+      "notes": "One channel per open role — archive when filled"
+    },
+    {
+      "date": "2026-03-30",
+      "decision": "Use \"Decacorn\" as slide title (not \"Unicorn\")",
+      "madeBy": "Peter, Thorbjørn, Florian",
+      "rationale": "More aggressive positioning; 2.5B valuation by 2030 shown, team believes actual ceiling is higher",
+      "linkedActions": "Update slide to 150 containers, fix annual revenue wording",
+      "notes": "Thorbjørn noted it prompts investors to do the math in their heads"
+    }
+  ],
+  "communications": {
+    "slackMessages": 1067,
+    "channels": [
+      {
+        "name": "all-bifrost-sovereign",
+        "messages": 245,
+        "members": 7,
+        "mostActive": [
+          "Karen",
+          "Florian",
+          "Philippe"
+        ]
+      },
+      {
+        "name": "gtm",
+        "messages": 189,
+        "members": 4,
+        "mostActive": [
+          "Sacha",
+          "Peter",
+          "Florian"
+        ]
+      },
+      {
+        "name": "fundraising",
+        "messages": 156,
+        "members": 3,
+        "mostActive": [
+          "Peter",
+          "Thorbjørn",
+          "Karen"
+        ]
+      },
+      {
+        "name": "operations",
+        "messages": 134,
+        "members": 3,
+        "mostActive": [
+          "Karen",
+          "Sophus",
+          "Philippe"
+        ]
+      },
+      {
+        "name": "financing-and-debt",
+        "messages": 112,
+        "members": 3,
+        "mostActive": [
+          "Philippe",
+          "Peter",
+          "Karen"
+        ]
+      },
+      {
+        "name": "tech",
+        "messages": 87,
+        "members": 2,
+        "mostActive": [
+          "Kristof",
+          "Karen"
+        ]
+      },
+      {
+        "name": "hiring-and-recruitment",
+        "messages": 67,
+        "members": 3,
+        "mostActive": [
+          "Sophus",
+          "Karen",
+          "Florian"
+        ]
+      },
+      {
+        "name": "marketing",
+        "messages": 45,
+        "members": 2,
+        "mostActive": [
+          "Florian",
+          "Karen"
+        ]
+      },
+      {
+        "name": "social",
+        "messages": 32,
+        "members": 4,
+        "mostActive": [
+          "Karen",
+          "Florian",
+          "Sophus"
+        ]
+      }
+    ]
+  },
+  "googleDrive": {
+    "rootFolders": 15,
+    "totalFiles": 18,
+    "topFolders": [
+      {
+        "name": "03 - GTM",
+        "fileCount": 5,
+        "lastModified": "2026-04-02T10:33:42.450Z"
+      },
+      {
+        "name": "Karen",
+        "fileCount": 5,
+        "lastModified": "2026-03-31T11:30:03.987Z"
+      },
+      {
+        "name": "GTM Role - Candidate Files",
+        "fileCount": 3,
+        "lastModified": "2026-04-01T17:41:34.771Z"
+      },
+      {
+        "name": "08 - Hiring",
+        "fileCount": 1,
+        "lastModified": "2026-04-01T17:41:34.690Z"
+      },
+      {
+        "name": "00 - Agents",
+        "fileCount": 1,
+        "lastModified": "2026-03-31T12:12:10.445Z"
+      }
+    ]
+  },
+  "patterns": {
+    "strongestCollaborations": [],
+    "communicationHubs": [
+      {
+        "channel": "all-bifrost-sovereign",
+        "messages": 245,
+        "members": 7
+      },
+      {
+        "channel": "gtm",
+        "messages": 189,
+        "members": 4
+      },
+      {
+        "channel": "fundraising",
+        "messages": 156,
+        "members": 3
+      },
+      {
+        "channel": "operations",
+        "messages": 134,
+        "members": 3
+      },
+      {
+        "channel": "financing-and-debt",
+        "messages": 112,
+        "members": 3
+      }
+    ],
+    "interdependencies": []
+  }
+}

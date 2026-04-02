@@ -1,0 +1,572 @@
+{
+  "actions": [
+    {
+      "item": "Full financial deck rebuilt",
+      "owner": "Philippe",
+      "deadline": "2026-03-31",
+      "status": "Open",
+      "source": "",
+      "dateOpened": "2026-03-30",
+      "dateClosed": "",
+      "notes": ""
+    },
+    {
+      "item": "Legal docs signed — license",
+      "owner": "Philippe",
+      "deadline": "2026-03-30",
+      "status": "Open",
+      "source": "",
+      "dateOpened": "2026-03-30",
+      "dateClosed": "",
+      "notes": "License today per cadence note"
+    },
+    {
+      "item": "Legal docs signed — JV agreement",
+      "owner": "Philippe",
+      "deadline": "2026-03-31",
+      "status": "Open",
+      "source": "",
+      "dateOpened": "2026-03-30",
+      "dateClosed": "",
+      "notes": ""
+    },
+    {
+      "item": "Legal docs signed — SHA",
+      "owner": "Philippe",
+      "deadline": "2026-04-01",
+      "status": "Open",
+      "source": "",
+      "dateOpened": "2026-03-30",
+      "dateClosed": "",
+      "notes": ""
+    },
+    {
+      "item": "Legal docs closed",
+      "owner": "Thorbjørn",
+      "deadline": "2026-03-31",
+      "status": "Open",
+      "source": "",
+      "dateOpened": "2026-03-30",
+      "dateClosed": "",
+      "notes": ""
+    },
+    {
+      "item": "Investor pipeline active",
+      "owner": "Thorbjørn",
+      "deadline": "2026-03-31",
+      "status": "Open",
+      "source": "",
+      "dateOpened": "2026-03-30",
+      "dateClosed": "",
+      "notes": ""
+    },
+    {
+      "item": "Pitch deck finalised",
+      "owner": "Peter",
+      "deadline": "2026-03-31",
+      "status": "Open",
+      "source": "",
+      "dateOpened": "2026-03-30",
+      "dateClosed": "",
+      "notes": ""
+    },
+    {
+      "item": "Investor outreach active",
+      "owner": "Peter",
+      "deadline": "2026-03-31",
+      "status": "Open",
+      "source": "",
+      "dateOpened": "2026-03-30",
+      "dateClosed": "",
+      "notes": ""
+    },
+    {
+      "item": "GTM ICP list finalised",
+      "owner": "Sacha",
+      "deadline": "2026-03-31",
+      "status": "Open",
+      "source": "",
+      "dateOpened": "2026-03-30",
+      "dateClosed": "",
+      "notes": ""
+    },
+    {
+      "item": "First GTM outreach sent",
+      "owner": "Sacha",
+      "deadline": "2026-03-31",
+      "status": "Open",
+      "source": "",
+      "dateOpened": "2026-03-30",
+      "dateClosed": "",
+      "notes": ""
+    },
+    {
+      "item": "Product roadmap week 1 scope locked",
+      "owner": "Kristof",
+      "deadline": "2026-03-31",
+      "status": "Open",
+      "source": "",
+      "dateOpened": "2026-03-30",
+      "dateClosed": "",
+      "notes": ""
+    },
+    {
+      "item": "Decacorn slide updated — 150 containers + annual revenue wording",
+      "owner": "Sophus",
+      "deadline": "2026-03-30",
+      "status": "Closed",
+      "source": "",
+      "dateOpened": "2026-03-30",
+      "dateClosed": "2026-03-30",
+      "notes": "Typo unicorn→decacorn also fixed"
+    },
+    {
+      "item": "Interview: Florian Schirnick (GTM role)",
+      "owner": "Sophus",
+      "deadline": "2026-03-31",
+      "status": "Open",
+      "source": "",
+      "dateOpened": "2026-03-30",
+      "dateClosed": "",
+      "notes": "Scheduled 15:00 CET 31 Mar"
+    },
+    {
+      "item": "Interview: Albert Steffes (Ops role)",
+      "owner": "Sophus",
+      "deadline": "2026-03-31",
+      "status": "Open",
+      "source": "",
+      "dateOpened": "2026-03-30",
+      "dateClosed": "",
+      "notes": "Scheduled 13:30 CET 31 Mar"
+    },
+    {
+      "item": "Interview: Thomas Eskenazi (Ops role)",
+      "owner": "Sophus",
+      "deadline": "2026-03-31",
+      "status": "Open",
+      "source": "",
+      "dateOpened": "2026-03-30",
+      "dateClosed": "",
+      "notes": "Scheduled 15:30 CET 31 Mar"
+    },
+    {
+      "item": "Round 2 interview: Eoin (GTM role) — Thorbjørn to join",
+      "owner": "Sophus + Thorbjørn",
+      "deadline": "2026-04-01",
+      "status": "Open",
+      "source": "",
+      "dateOpened": "2026-03-30",
+      "dateClosed": "",
+      "notes": "Wed 6pm CET — Florian + one of Peter/Sacha also invited"
+    },
+    {
+      "item": "Teraswitch intro — explore financial leasing model",
+      "owner": "Peter",
+      "deadline": "",
+      "status": "Open",
+      "source": "",
+      "dateOpened": "2026-03-31",
+      "dateClosed": "",
+      "notes": "Intro via Marko to CEO"
+    },
+    {
+      "item": "Financing model comparison — OR vs AND structure",
+      "owner": "Florian / Thorbjørn",
+      "deadline": "",
+      "status": "Open",
+      "source": "",
+      "dateOpened": "2026-03-31",
+      "dateClosed": "",
+      "notes": "Ongoing analysis; Florian flagging Year 3 capabilities assumption"
+    },
+    {
+      "item": "Drive workspace structure set up",
+      "owner": "Sophus",
+      "deadline": "2026-03-31",
+      "status": "Closed",
+      "source": "",
+      "dateOpened": "2026-03-31",
+      "dateClosed": "2026-03-31",
+      "notes": "Karen workspace created under 00 Agents"
+    },
+    {
+      "item": "In-person workshop Spain planning (6-9 Apr)",
+      "owner": "Sophus",
+      "deadline": "2026-04-04",
+      "status": "Open",
+      "source": "",
+      "dateOpened": "2026-03-30",
+      "dateClosed": "",
+      "notes": "Team to drop suggestions; Karen to consolidate"
+    },
+    {
+      "item": "Culture Session — full team",
+      "owner": "Peter",
+      "deadline": "2026-04-09",
+      "status": "Confirmed",
+      "source": "",
+      "dateOpened": "2026-03-31",
+      "dateClosed": "",
+      "notes": "Thu 9 Apr, 10:00-13:30, Villa Mantequilla. Peter leads. Full team. Peter departs airport after 13:30."
+    },
+    {
+      "item": "Schedule next-stage interview for Albert Steffes (Strategy & Ops)",
+      "owner": "Sophus",
+      "deadline": "2026-04-04",
+      "status": "In Progress",
+      "source": "",
+      "dateOpened": "2026-03-31",
+      "dateClosed": "",
+      "notes": "Thomas Eskenazi on hold (too strong consumer focus). Bente Baumann scheduled 2026-04-07."
+    },
+    {
+      "item": "Follow up with Henry (RAISE founder) re: AI founders SPV — post weekend intro via Jonathan",
+      "owner": "Thorbjørn / Peter",
+      "deadline": "2026-04-07",
+      "status": "Open",
+      "source": "",
+      "dateOpened": "2026-04-01",
+      "dateClosed": "",
+      "notes": "Jonathan meeting Henry this weekend. Henry = founder of RAISE, French, has all EU AI contacts. Potential investor in AI founders SPV (≤€25K ticket)."
+    },
+    {
+      "item": "Complete GTM candidate scorecard (Eoin) — https://docs.google.com/spreadsheets/d/1iw7EM_IK0yFGh-JAITRQPqD3EGtMR-d1/edit",
+      "owner": "Florian",
+      "deadline": "",
+      "status": "Open",
+      "source": "",
+      "dateOpened": "2026-04-01",
+      "dateClosed": "",
+      "notes": "Sophus request — populate key dimensions to compare candidates"
+    },
+    {
+      "item": "Complete GTM candidate scorecard (Eoin) — https://docs.google.com/spreadsheets/d/1iw7EM_IK0yFGh-JAITRQPqD3EGtMR-d1/edit",
+      "owner": "Peter",
+      "deadline": "",
+      "status": "Open",
+      "source": "",
+      "dateOpened": "2026-04-01",
+      "dateClosed": "",
+      "notes": "Sophus request — populate key dimensions to compare candidates"
+    },
+    {
+      "item": "Item",
+      "owner": "Owner",
+      "deadline": "Deadline",
+      "status": "Status",
+      "source": "",
+      "dateOpened": "Date Opened",
+      "dateClosed": "Date Closed",
+      "notes": "Notes"
+    },
+    {
+      "item": "Hire infrastructure debt advisor (Greenhill, Lazard, InfraVia, Macquarie)",
+      "owner": "Peter Damm",
+      "deadline": "2026-04-03",
+      "status": "Open",
+      "source": "",
+      "dateOpened": "2026-04-01",
+      "dateClosed": "",
+      "notes": "One call that saves six months. Must close €5–50M deals in Europe in last 2 years."
+    },
+    {
+      "item": "Close €4–5M debt facility for Container 1",
+      "owner": "Peter Damm",
+      "deadline": "2026-04-30",
+      "status": "Open",
+      "source": "",
+      "dateOpened": "2026-04-01",
+      "dateClosed": "",
+      "notes": "Private credit funds first (Kartesia, Arcmont, Pemberton, Tikehau, Muzinich). Then EIB/EIF if needed."
+    },
+    {
+      "item": "Secure €1M+ equity for Container 1",
+      "owner": "Thorbjørn Rønje",
+      "deadline": "2026-04-30",
+      "status": "Open",
+      "source": "",
+      "dateOpened": "2026-04-01",
+      "dateClosed": "",
+      "notes": "Existing investors first. Then family offices (Summa, Vaekstfonden, CIP ecosystem)."
+    },
+    {
+      "item": "Build Container 1 to cash generation (€4.7M FCF/year)",
+      "owner": "Kristof De Spiegeleer",
+      "deadline": "2026-06-30",
+      "status": "Open",
+      "source": "",
+      "dateOpened": "2026-04-01",
+      "dateClosed": "",
+      "notes": "Prerequisite for Container 2. Realistic timeline ~8–12 weeks from funding close."
+    },
+    {
+      "item": "Confirm Container 2 offtake agreement",
+      "owner": "Sacha Obeegadoo",
+      "deadline": "2026-06-15",
+      "status": "Open",
+      "source": "",
+      "dateOpened": "2026-04-01",
+      "dateClosed": "",
+      "notes": "Needed for Container 2 debt conversations. Florian supports on partnerships."
+    }
+  ],
+  "decisions": [
+    {
+      "date": "2026-03-30",
+      "decision": "Use \"Decacorn\" as slide title (not \"Unicorn\")",
+      "madeBy": "Peter, Thorbjørn, Florian",
+      "rationale": "More aggressive positioning; 2.5B valuation by 2030 shown, team believes actual ceiling is higher",
+      "linkedActions": "Update slide to 150 containers, fix annual revenue wording",
+      "notes": "Thorbjørn noted it prompts investors to do the math in their heads"
+    },
+    {
+      "date": "2026-03-30",
+      "decision": "Separate GTM channel (pipeline/sales) from GTM-role-recruitment channel",
+      "madeBy": "Sophus, Florian",
+      "rationale": "Cleaner separation of ongoing activity vs hiring; archive recruitment channel once hired",
+      "linkedActions": "",
+      "notes": "One channel per open role — archive when filled"
+    },
+    {
+      "date": "2026-03-30",
+      "decision": "Operations Cadence launched — weekly rhythm established",
+      "madeBy": "Sophus",
+      "rationale": "Weekly: All Hands (Mon), GTM War Room, Ops & Finance Close, Hiring Review, Friday Pulse",
+      "linkedActions": "",
+      "notes": ""
+    },
+    {
+      "date": "2026-03-31",
+      "decision": "Karen workspace created under 00 Agents in shared drive",
+      "madeBy": "Sophus",
+      "rationale": "Agent needs structured write scope; Sheets for action/decision/priority, Doc for pulse, Folder for meeting notes",
+      "linkedActions": "",
+      "notes": ""
+    },
+    {
+      "date": "2026-03-31",
+      "decision": "In-person workshop planned Spain, w/c 6 Apr (6–9 Apr)",
+      "madeBy": "Sophus",
+      "rationale": "Early team alignment session before ops associate joins",
+      "linkedActions": "Spain workshop logistics TBC",
+      "notes": "Team to suggest agenda items"
+    }
+  ],
+  "priorities": [
+    {
+      "workstream": "Fundraising",
+      "owner": "Peter + Thorbjørn",
+      "priority": "1 — Critical",
+      "status": "Active",
+      "currentFocus": "Deck finalised (Decacorn slide locked). Investor outreach running.",
+      "blockers": [
+        "Unit economics slide may need further update"
+      ],
+      "lastUpdated": "2026-03-31",
+      "notes": "Data room live. Thor + Peter leading investor conversations."
+    },
+    {
+      "workstream": "Legal & Entity",
+      "owner": "Philippe",
+      "priority": "1 — Critical",
+      "status": "Active",
+      "currentFocus": "License (Mon), JV (Tue), SHA (Wed) signing sequence this week",
+      "blockers": [
+        "All three docs must close this week"
+      ],
+      "lastUpdated": "2026-03-30",
+      "notes": "Philippe dual-hatting legal + finance"
+    },
+    {
+      "workstream": "Financing & Debt",
+      "owner": "Peter + Florian",
+      "priority": "1 — Critical",
+      "status": "Active",
+      "currentFocus": "Exploring financial leasing via Teraswitch. OR vs AND model debate ongoing.",
+      "blockers": [
+        "Model comparison not yet resolved"
+      ],
+      "lastUpdated": "2026-03-31",
+      "notes": "Thorbjørn drafted analysis; Florian challenging Year 3 assumptions"
+    },
+    {
+      "workstream": "GTM — Agentic Cloud",
+      "owner": "Sacha",
+      "priority": "2 — High",
+      "status": "Active",
+      "currentFocus": "ICP list being finalised. First outreach this week.",
+      "blockers": [
+        "ICP not yet locked"
+      ],
+      "lastUpdated": "2026-03-30",
+      "notes": "Protect Sacha capacity — do not pile ops burden"
+    },
+    {
+      "workstream": "GTM — Data Centers",
+      "owner": "Peter",
+      "priority": "2 — High",
+      "status": "Active",
+      "currentFocus": "Pipeline outreach. Teraswitch connection in play.",
+      "blockers": [],
+      "lastUpdated": "2026-03-31",
+      "notes": ""
+    },
+    {
+      "workstream": "Hiring — GTM Associate",
+      "owner": "Sophus",
+      "priority": "2 — High",
+      "status": "Active",
+      "currentFocus": "Florian Schirnick interview Tue 15:00. Eoin (strong rec) → round 2 Wed 18:00 CET.",
+      "blockers": [
+        "Thorbjørn + Florian to confirm Wed availability"
+      ],
+      "lastUpdated": "2026-03-31",
+      "notes": ""
+    },
+    {
+      "workstream": "Hiring — Ops & Strategy Associate",
+      "owner": "Sophus",
+      "priority": "2 — High",
+      "status": "Active",
+      "currentFocus": "Albert Steffes (Tue 13:30), Thomas Eskenazi (Tue 15:30), Bente Baumann (Mon 7 Apr)",
+      "blockers": [],
+      "lastUpdated": "2026-03-31",
+      "notes": "Target join weeks 4–8"
+    },
+    {
+      "workstream": "Hiring — Supply Chain",
+      "owner": "TBC",
+      "priority": "3 — Medium",
+      "status": "Not started",
+      "currentFocus": "Role open. No owner assigned.",
+      "blockers": [
+        "No owner"
+      ],
+      "lastUpdated": "2026-03-28",
+      "notes": "Needs named owner and start date"
+    },
+    {
+      "workstream": "Product & R&D",
+      "owner": "Kristof",
+      "priority": "2 — High",
+      "status": "Active",
+      "currentFocus": "Week 1 scope to be locked this week",
+      "blockers": [
+        "Scope not yet confirmed"
+      ],
+      "lastUpdated": "2026-03-30",
+      "notes": ""
+    },
+    {
+      "workstream": "Operations Cadence",
+      "owner": "Sophus + Karen",
+      "priority": "2 — High",
+      "status": "Active",
+      "currentFocus": "Cadence launched. Karen workspace live. Spain workshop planning (6–9 Apr).",
+      "blockers": [],
+      "lastUpdated": "2026-03-31",
+      "notes": "First full week of structured cadence"
+    },
+    {
+      "workstream": "Marketing & Content",
+      "owner": "Florian",
+      "priority": "3 — Medium",
+      "status": "Not started",
+      "currentFocus": "Peter posting on LinkedIn (social channel). Content calendar not yet built.",
+      "blockers": [
+        "No content calendar exists"
+      ],
+      "lastUpdated": "2026-03-31",
+      "notes": "Peter LinkedIn post on NVIDIA/GPU alternatives 30 Mar + Odense Robotics 31 Mar"
+    },
+    {
+      "workstream": "Alator Capital - Offtake",
+      "owner": "Peter",
+      "priority": "High",
+      "status": "Active",
+      "currentFocus": "Satbir Sandhu (contact) - Agentic platform + sovereign micro-datacentre compute",
+      "blockers": [
+        "None"
+      ],
+      "lastUpdated": "2026-04-02",
+      "notes": "Live dialogue 2026-04-02. Building agents at Alator + bigger agentic solutions. Looking for sovereign compute with agentic layer. Consulting + dev agency partnerships of interest."
+    }
+  ],
+  "blockers": [
+    {
+      "workstream": "Fundraising",
+      "blockers": [
+        "Unit economics slide may need further update"
+      ]
+    },
+    {
+      "workstream": "Legal & Entity",
+      "blockers": [
+        "All three docs must close this week"
+      ]
+    },
+    {
+      "workstream": "Financing & Debt",
+      "blockers": [
+        "Model comparison not yet resolved"
+      ]
+    },
+    {
+      "workstream": "GTM — Agentic Cloud",
+      "blockers": [
+        "ICP not yet locked"
+      ]
+    },
+    {
+      "workstream": "Hiring — GTM Associate",
+      "blockers": [
+        "Thorbjørn + Florian to confirm Wed availability"
+      ]
+    },
+    {
+      "workstream": "Hiring — Supply Chain",
+      "blockers": [
+        "No owner"
+      ]
+    },
+    {
+      "workstream": "Product & R&D",
+      "blockers": [
+        "Scope not yet confirmed"
+      ]
+    },
+    {
+      "workstream": "Marketing & Content",
+      "blockers": [
+        "No content calendar exists"
+      ]
+    },
+    {
+      "workstream": "Alator Capital - Offtake",
+      "blockers": [
+        "None"
+      ]
+    }
+  ],
+  "people": [
+    "Philippe",
+    "Thorbjørn",
+    "Peter",
+    "Sacha",
+    "Kristof",
+    "Sophus",
+    "Sophus + Thorbjørn",
+    "Florian / Thorbjørn",
+    "Thorbjørn / Peter",
+    "Florian",
+    "Owner",
+    "Peter Damm",
+    "Thorbjørn Rønje",
+    "Kristof De Spiegeleer",
+    "Sacha Obeegadoo",
+    "Peter, Thorbjørn, Florian",
+    "Sophus, Florian"
+  ],
+  "extractedAt": "2026-04-02T21:01:06.357Z"
+}

@@ -1,0 +1,627 @@
+{
+  "timestamp": "2026-04-02T21:01:49.634Z",
+  "activityTimeline": [
+    {
+      "type": "action",
+      "date": "2026-04-01",
+      "person": "Thorbjørn / Peter",
+      "description": "Follow up with Henry (RAISE founder) re: AI founders SPV — post weekend intro via Jonathan",
+      "status": "Open",
+      "workstream": ""
+    },
+    {
+      "type": "action",
+      "date": "2026-04-01",
+      "person": "Florian",
+      "description": "Complete GTM candidate scorecard (Eoin) — https://docs.google.com/spreadsheets/d/1iw7EM_IK0yFGh-JAITRQPqD3EGtMR-d1/edit",
+      "status": "Open",
+      "workstream": ""
+    },
+    {
+      "type": "action",
+      "date": "2026-04-01",
+      "person": "Peter",
+      "description": "Complete GTM candidate scorecard (Eoin) — https://docs.google.com/spreadsheets/d/1iw7EM_IK0yFGh-JAITRQPqD3EGtMR-d1/edit",
+      "status": "Open",
+      "workstream": ""
+    },
+    {
+      "type": "action",
+      "date": "2026-04-01",
+      "person": "Peter Damm",
+      "description": "Hire infrastructure debt advisor (Greenhill, Lazard, InfraVia, Macquarie)",
+      "status": "Open",
+      "workstream": ""
+    },
+    {
+      "type": "action",
+      "date": "2026-04-01",
+      "person": "Peter Damm",
+      "description": "Close €4–5M debt facility for Container 1",
+      "status": "Open",
+      "workstream": ""
+    },
+    {
+      "type": "action",
+      "date": "2026-04-01",
+      "person": "Thorbjørn Rønje",
+      "description": "Secure €1M+ equity for Container 1",
+      "status": "Open",
+      "workstream": ""
+    },
+    {
+      "type": "action",
+      "date": "2026-04-01",
+      "person": "Kristof De Spiegeleer",
+      "description": "Build Container 1 to cash generation (€4.7M FCF/year)",
+      "status": "Open",
+      "workstream": ""
+    },
+    {
+      "type": "action",
+      "date": "2026-04-01",
+      "person": "Sacha Obeegadoo",
+      "description": "Confirm Container 2 offtake agreement",
+      "status": "Open",
+      "workstream": ""
+    },
+    {
+      "type": "action",
+      "date": "2026-03-31",
+      "person": "Peter",
+      "description": "Teraswitch intro — explore financial leasing model",
+      "status": "Open",
+      "workstream": ""
+    },
+    {
+      "type": "action",
+      "date": "2026-03-31",
+      "person": "Florian / Thorbjørn",
+      "description": "Financing model comparison — OR vs AND structure",
+      "status": "Open",
+      "workstream": ""
+    },
+    {
+      "type": "action",
+      "date": "2026-03-31",
+      "person": "Sophus",
+      "description": "Drive workspace structure set up",
+      "status": "Closed",
+      "workstream": ""
+    },
+    {
+      "type": "completion",
+      "date": "2026-03-31",
+      "person": "Sophus",
+      "description": "Completed: Drive workspace structure set up",
+      "workstream": ""
+    },
+    {
+      "type": "action",
+      "date": "2026-03-31",
+      "person": "Peter",
+      "description": "Culture Session — full team",
+      "status": "Confirmed",
+      "workstream": ""
+    },
+    {
+      "type": "action",
+      "date": "2026-03-31",
+      "person": "Sophus",
+      "description": "Schedule next-stage interview for Albert Steffes (Strategy & Ops)",
+      "status": "In Progress",
+      "workstream": ""
+    },
+    {
+      "type": "decision",
+      "date": "2026-03-31",
+      "person": "Sophus",
+      "description": "Karen workspace created under 00 Agents in shared drive",
+      "impact": 0
+    },
+    {
+      "type": "decision",
+      "date": "2026-03-31",
+      "person": "Sophus",
+      "description": "In-person workshop planned Spain, w/c 6 Apr (6–9 Apr)",
+      "impact": 1
+    },
+    {
+      "type": "action",
+      "date": "2026-03-30",
+      "person": "Philippe",
+      "description": "Full financial deck rebuilt",
+      "status": "Open",
+      "workstream": ""
+    },
+    {
+      "type": "action",
+      "date": "2026-03-30",
+      "person": "Philippe",
+      "description": "Legal docs signed — license",
+      "status": "Open",
+      "workstream": ""
+    },
+    {
+      "type": "action",
+      "date": "2026-03-30",
+      "person": "Philippe",
+      "description": "Legal docs signed — JV agreement",
+      "status": "Open",
+      "workstream": ""
+    },
+    {
+      "type": "action",
+      "date": "2026-03-30",
+      "person": "Philippe",
+      "description": "Legal docs signed — SHA",
+      "status": "Open",
+      "workstream": ""
+    },
+    {
+      "type": "action",
+      "date": "2026-03-30",
+      "person": "Thorbjørn",
+      "description": "Legal docs closed",
+      "status": "Open",
+      "workstream": ""
+    },
+    {
+      "type": "action",
+      "date": "2026-03-30",
+      "person": "Thorbjørn",
+      "description": "Investor pipeline active",
+      "status": "Open",
+      "workstream": ""
+    },
+    {
+      "type": "action",
+      "date": "2026-03-30",
+      "person": "Peter",
+      "description": "Pitch deck finalised",
+      "status": "Open",
+      "workstream": ""
+    },
+    {
+      "type": "action",
+      "date": "2026-03-30",
+      "person": "Peter",
+      "description": "Investor outreach active",
+      "status": "Open",
+      "workstream": ""
+    },
+    {
+      "type": "action",
+      "date": "2026-03-30",
+      "person": "Sacha",
+      "description": "GTM ICP list finalised",
+      "status": "Open",
+      "workstream": ""
+    },
+    {
+      "type": "action",
+      "date": "2026-03-30",
+      "person": "Sacha",
+      "description": "First GTM outreach sent",
+      "status": "Open",
+      "workstream": ""
+    },
+    {
+      "type": "action",
+      "date": "2026-03-30",
+      "person": "Kristof",
+      "description": "Product roadmap week 1 scope locked",
+      "status": "Open",
+      "workstream": ""
+    },
+    {
+      "type": "action",
+      "date": "2026-03-30",
+      "person": "Sophus",
+      "description": "Decacorn slide updated — 150 containers + annual revenue wording",
+      "status": "Closed",
+      "workstream": ""
+    },
+    {
+      "type": "completion",
+      "date": "2026-03-30",
+      "person": "Sophus",
+      "description": "Completed: Decacorn slide updated — 150 containers + annual revenue wording",
+      "workstream": ""
+    },
+    {
+      "type": "action",
+      "date": "2026-03-30",
+      "person": "Sophus",
+      "description": "Interview: Florian Schirnick (GTM role)",
+      "status": "Open",
+      "workstream": ""
+    },
+    {
+      "type": "action",
+      "date": "2026-03-30",
+      "person": "Sophus",
+      "description": "Interview: Albert Steffes (Ops role)",
+      "status": "Open",
+      "workstream": ""
+    },
+    {
+      "type": "action",
+      "date": "2026-03-30",
+      "person": "Sophus",
+      "description": "Interview: Thomas Eskenazi (Ops role)",
+      "status": "Open",
+      "workstream": ""
+    },
+    {
+      "type": "action",
+      "date": "2026-03-30",
+      "person": "Sophus + Thorbjørn",
+      "description": "Round 2 interview: Eoin (GTM role) — Thorbjørn to join",
+      "status": "Open",
+      "workstream": ""
+    },
+    {
+      "type": "action",
+      "date": "2026-03-30",
+      "person": "Sophus",
+      "description": "In-person workshop Spain planning (6-9 Apr)",
+      "status": "Open",
+      "workstream": ""
+    },
+    {
+      "type": "action",
+      "date": "Date Opened",
+      "person": "Owner",
+      "description": "Item",
+      "status": "Status",
+      "workstream": ""
+    },
+    {
+      "type": "completion",
+      "date": "Date Closed",
+      "person": "Owner",
+      "description": "Completed: Item",
+      "workstream": ""
+    },
+    {
+      "type": "decision",
+      "date": "2026-03-30",
+      "person": "Peter, Thorbjørn, Florian",
+      "description": "Use \"Decacorn\" as slide title (not \"Unicorn\")",
+      "impact": 2
+    },
+    {
+      "type": "decision",
+      "date": "2026-03-30",
+      "person": "Sophus, Florian",
+      "description": "Separate GTM channel (pipeline/sales) from GTM-role-recruitment channel",
+      "impact": 0
+    },
+    {
+      "type": "decision",
+      "date": "2026-03-30",
+      "person": "Sophus",
+      "description": "Operations Cadence launched — weekly rhythm established",
+      "impact": 0
+    }
+  ],
+  "relationships": [
+    {
+      "name": "Philippe",
+      "activityCount": 4,
+      "channels": [
+        "all-bifrost-sovereign",
+        "operations",
+        "financing-and-debt"
+      ],
+      "collaborators": [],
+      "actionsOwned": 4,
+      "decisionsOwned": 0
+    },
+    {
+      "name": "Thorbjørn",
+      "activityCount": 2,
+      "channels": [
+        "all-bifrost-sovereign",
+        "fundraising"
+      ],
+      "collaborators": [],
+      "actionsOwned": 2,
+      "decisionsOwned": 0
+    },
+    {
+      "name": "Peter",
+      "activityCount": 5,
+      "channels": [
+        "all-bifrost-sovereign",
+        "gtm",
+        "fundraising",
+        "financing-and-debt",
+        "social"
+      ],
+      "collaborators": [],
+      "actionsOwned": 5,
+      "decisionsOwned": 0
+    },
+    {
+      "name": "Sacha",
+      "activityCount": 2,
+      "channels": [
+        "all-bifrost-sovereign",
+        "gtm"
+      ],
+      "collaborators": [],
+      "actionsOwned": 2,
+      "decisionsOwned": 0
+    },
+    {
+      "name": "Kristof",
+      "activityCount": 1,
+      "channels": [
+        "all-bifrost-sovereign",
+        "tech"
+      ],
+      "collaborators": [],
+      "actionsOwned": 1,
+      "decisionsOwned": 0
+    },
+    {
+      "name": "Sophus",
+      "activityCount": 12,
+      "channels": [
+        "operations",
+        "hiring-and-recruitment",
+        "social"
+      ],
+      "collaborators": [],
+      "actionsOwned": 7,
+      "decisionsOwned": 3
+    },
+    {
+      "name": "Sophus + Thorbjørn",
+      "activityCount": 1,
+      "channels": [],
+      "collaborators": [],
+      "actionsOwned": 1,
+      "decisionsOwned": 0
+    },
+    {
+      "name": "Florian / Thorbjørn",
+      "activityCount": 1,
+      "channels": [],
+      "collaborators": [],
+      "actionsOwned": 1,
+      "decisionsOwned": 0
+    },
+    {
+      "name": "Thorbjørn / Peter",
+      "activityCount": 1,
+      "channels": [],
+      "collaborators": [],
+      "actionsOwned": 1,
+      "decisionsOwned": 0
+    },
+    {
+      "name": "Florian",
+      "activityCount": 1,
+      "channels": [
+        "all-bifrost-sovereign",
+        "gtm",
+        "hiring-and-recruitment",
+        "marketing",
+        "social"
+      ],
+      "collaborators": [],
+      "actionsOwned": 1,
+      "decisionsOwned": 0
+    },
+    {
+      "name": "Owner",
+      "activityCount": 2,
+      "channels": [],
+      "collaborators": [],
+      "actionsOwned": 1,
+      "decisionsOwned": 0
+    },
+    {
+      "name": "Peter Damm",
+      "activityCount": 2,
+      "channels": [],
+      "collaborators": [],
+      "actionsOwned": 2,
+      "decisionsOwned": 0
+    },
+    {
+      "name": "Thorbjørn Rønje",
+      "activityCount": 1,
+      "channels": [],
+      "collaborators": [],
+      "actionsOwned": 1,
+      "decisionsOwned": 0
+    },
+    {
+      "name": "Kristof De Spiegeleer",
+      "activityCount": 1,
+      "channels": [],
+      "collaborators": [],
+      "actionsOwned": 1,
+      "decisionsOwned": 0
+    },
+    {
+      "name": "Sacha Obeegadoo",
+      "activityCount": 1,
+      "channels": [],
+      "collaborators": [],
+      "actionsOwned": 1,
+      "decisionsOwned": 0
+    },
+    {
+      "name": "Peter, Thorbjørn, Florian",
+      "activityCount": 1,
+      "channels": [],
+      "collaborators": [],
+      "actionsOwned": 0,
+      "decisionsOwned": 1
+    },
+    {
+      "name": "Sophus, Florian",
+      "activityCount": 1,
+      "channels": [],
+      "collaborators": [],
+      "actionsOwned": 0,
+      "decisionsOwned": 1
+    }
+  ],
+  "collaborationMatrix": [],
+  "criticalPath": [
+    {
+      "item": "Culture Session — full team",
+      "owner": "Peter",
+      "deadline": "2026-04-09",
+      "status": "Confirmed",
+      "daysOverdue": 0
+    },
+    {
+      "item": "Schedule next-stage interview for Albert Steffes (Strategy & Ops)",
+      "owner": "Sophus",
+      "deadline": "2026-04-04",
+      "status": "In Progress",
+      "daysOverdue": 0
+    },
+    {
+      "item": "Item",
+      "owner": "Owner",
+      "deadline": "Deadline",
+      "status": "Status",
+      "daysOverdue": null
+    }
+  ],
+  "patterns": {
+    "mostActive": [
+      {
+        "person": "Sophus",
+        "activityCount": 12
+      },
+      {
+        "person": "Peter",
+        "activityCount": 5
+      },
+      {
+        "person": "Philippe",
+        "activityCount": 4
+      },
+      {
+        "person": "Thorbjørn",
+        "activityCount": 2
+      },
+      {
+        "person": "Sacha",
+        "activityCount": 2
+      },
+      {
+        "person": "Owner",
+        "activityCount": 2
+      },
+      {
+        "person": "Peter Damm",
+        "activityCount": 2
+      },
+      {
+        "person": "Kristof",
+        "activityCount": 1
+      },
+      {
+        "person": "Sophus + Thorbjørn",
+        "activityCount": 1
+      },
+      {
+        "person": "Florian / Thorbjørn",
+        "activityCount": 1
+      }
+    ],
+    "channelMap": {
+      "Karen": [
+        "all-bifrost-sovereign",
+        "gtm",
+        "fundraising",
+        "operations",
+        "financing-and-debt",
+        "tech",
+        "hiring-and-recruitment",
+        "marketing",
+        "social"
+      ],
+      "Florian": [
+        "all-bifrost-sovereign",
+        "gtm",
+        "hiring-and-recruitment",
+        "marketing",
+        "social"
+      ],
+      "Philippe": [
+        "all-bifrost-sovereign",
+        "operations",
+        "financing-and-debt"
+      ],
+      "Sacha": [
+        "all-bifrost-sovereign",
+        "gtm"
+      ],
+      "Peter": [
+        "all-bifrost-sovereign",
+        "gtm",
+        "fundraising",
+        "financing-and-debt",
+        "social"
+      ],
+      "Kristof": [
+        "all-bifrost-sovereign",
+        "tech"
+      ],
+      "Thorbjørn": [
+        "all-bifrost-sovereign",
+        "fundraising"
+      ],
+      "Sophus": [
+        "operations",
+        "hiring-and-recruitment",
+        "social"
+      ]
+    },
+    "communicationHubs": [
+      {
+        "channel": "all-bifrost-sovereign",
+        "messages": 245,
+        "members": 7
+      },
+      {
+        "channel": "gtm",
+        "messages": 189,
+        "members": 4
+      },
+      {
+        "channel": "fundraising",
+        "messages": 156,
+        "members": 3
+      },
+      {
+        "channel": "operations",
+        "messages": 134,
+        "members": 3
+      },
+      {
+        "channel": "financing-and-debt",
+        "messages": 112,
+        "members": 3
+      }
+    ]
+  },
+  "summary": {
+    "totalPeople": 17,
+    "totalActivities": 39,
+    "activeBlockers": 3,
+    "averageInteractionsByPerson": 2,
+    "strongestTeams": []
+  }
+}
