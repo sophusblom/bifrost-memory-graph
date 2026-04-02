@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bifrost Sovereign - Karen Memory Graph v2</title>
+    <title>Bifrost Sovereign - Karen Memory Graph</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape-cose-bilkent/4.1.0/cytoscape-cose-bilkent.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -17,61 +16,43 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: #0f1419;
             color: #e0e0e0;
-            overflow: hidden;
         }
         
-        #container {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        header {
+        #header {
             background: linear-gradient(135deg, #1a1f2e 0%, #2a2f3e 100%);
-            padding: 16px 30px;
+            padding: 20px 30px;
             border-bottom: 1px solid #3a4050;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
         
-        .header-left h1 {
+        #header h1 {
             font-size: 22px;
             font-weight: 600;
             color: #fff;
-            margin: 0 0 4px 0;
+            margin-bottom: 4px;
         }
         
-        .header-left .subtitle {
+        #header .subtitle {
             font-size: 12px;
             color: #a0a0a0;
         }
         
-        .header-right {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-        
-        .tab-group {
-            display: flex;
-            gap: 8px;
-            background: rgba(58, 64, 80, 0.5);
-            padding: 8px;
-            border-radius: 6px;
+        #cy {
+            width: 100%;
+            height: calc(100vh - 80px);
+            background: #0f1419;
         }
         
         .tab-btn {
-            padding: 6px 12px;
-            background: transparent;
-            border: 1px solid #3a4050;
+            display: inline-block;
+            padding: 8px 14px;
+            margin-right: 8px;
+            background: #3a4050;
+            border: 1px solid #4a5060;
             color: #a0a0a0;
             border-radius: 4px;
-            font-size: 12px;
             cursor: pointer;
+            font-size: 12px;
             transition: all 0.2s;
-            white-space: nowrap;
         }
         
         .tab-btn.active {
@@ -81,52 +62,52 @@
         }
         
         .tab-btn:hover {
-            border-color: #4A90E2;
+            background: #4A90E2;
             color: #fff;
         }
         
-        #cy {
-            flex: 1;
-            background: #0f1419;
+        .button {
+            display: inline-block;
+            padding: 8px 14px;
+            margin-right: 8px;
+            background: #4A90E2;
+            border: 1px solid #3a5fa8;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .button:hover {
+            background: #5a9ef2;
         }
         
         #sidebar {
             position: fixed;
             right: 0;
             top: 0;
-            width: 420px;
+            width: 400px;
             height: 100vh;
             background: #1a1f2e;
             border-left: 1px solid #3a4050;
+            padding: 20px;
             overflow-y: auto;
             z-index: 100;
+            transform: translateX(100%);
             transition: transform 0.3s ease;
-            padding: 20px;
         }
         
-        #sidebar.hidden {
-            transform: translateX(100%);
+        #sidebar.show {
+            transform: translateX(0);
         }
         
         .sidebar-header {
             font-size: 18px;
             font-weight: 600;
-            margin-bottom: 15px;
             color: #fff;
+            margin-bottom: 15px;
             border-bottom: 1px solid #3a4050;
             padding-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .node-type-badge {
-            background: #3a4050;
-            color: #fff;
-            padding: 3px 8px;
-            border-radius: 3px;
-            font-size: 11px;
-            text-transform: uppercase;
         }
         
         .sidebar-section {
@@ -137,7 +118,6 @@
             font-size: 11px;
             color: #8a8a8a;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
             margin-bottom: 6px;
         }
         
@@ -147,408 +127,248 @@
             line-height: 1.5;
         }
         
-        .relation-tag {
-            display: inline-block;
-            background: #3a4050;
-            color: #fff;
-            padding: 4px 8px;
-            border-radius: 3px;
-            font-size: 11px;
-            margin-right: 6px;
-            margin-bottom: 6px;
-        }
-        
-        .controls {
+        .info-box {
             position: fixed;
-            left: 20px;
             bottom: 20px;
+            left: 20px;
             background: rgba(26, 31, 46, 0.95);
             border: 1px solid #3a4050;
             border-radius: 8px;
             padding: 15px;
-            z-index: 100;
-            min-width: 220px;
-        }
-        
-        .control-group {
-            margin-bottom: 12px;
-        }
-        
-        .control-label {
-            font-size: 11px;
-            color: #8a8a8a;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 6px;
-        }
-        
-        button {
-            background: #4A90E2;
-            border: 1px solid #3a5fa8;
-            color: #fff;
-            padding: 8px 12px;
-            border-radius: 4px;
             font-size: 12px;
-            cursor: pointer;
-            transition: background 0.2s;
-            width: 100%;
-            margin-bottom: 8px;
-        }
-        
-        button:hover {
-            background: #5a9ef2;
-        }
-        
-        .stats {
-            position: fixed;
-            left: 20px;
-            top: 20px;
-            background: rgba(26, 31, 46, 0.95);
-            border: 1px solid #3a4050;
-            border-radius: 8px;
-            padding: 12px 15px;
-            font-size: 12px;
-            color: #a0a0a0;
             z-index: 100;
         }
         
-        .stat-row {
-            margin-bottom: 6px;
-        }
-        
-        .stat-value {
+        .info-value {
             color: #4A90E2;
             font-weight: 600;
-        }
-        
-        .type-legend {
-            position: fixed;
-            left: 20px;
-            top: 140px;
-            background: rgba(26, 31, 46, 0.95);
-            border: 1px solid #3a4050;
-            border-radius: 8px;
-            padding: 12px 15px;
-            font-size: 11px;
-            z-index: 100;
-            max-height: 300px;
-            overflow-y: auto;
-        }
-        
-        .legend-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-        
-        .legend-color {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            margin-right: 8px;
-            flex-shrink: 0;
         }
     </style>
 </head>
 <body>
-    <div id="container">
-        <header>
-            <div class="header-left">
-                <h1>Bifrost Sovereign Memory Graph</h1>
-                <div class="subtitle">Interactive knowledge graph v2.0 • 85 entities • 118 relationships</div>
-            </div>
-            <div class="header-right">
-                <div class="tab-group">
-                    <button class="tab-btn active" onclick="setFilter('all')">All</button>
-                    <button class="tab-btn" onclick="setFilter('person')">People</button>
-                    <button class="tab-btn" onclick="setFilter('meeting')">Meetings</button>
-                    <button class="tab-btn" onclick="setFilter('action_item')">Actions</button>
-                    <button class="tab-btn" onclick="setFilter('decision')">Decisions</button>
-                </div>
-            </div>
-        </header>
-        
-        <div id="cy"></div>
-        
-        <div id="sidebar" class="hidden">
-            <div class="sidebar-header">
-                <span id="nodeTitle">Select a node</span>
-                <span class="node-type-badge" id="nodeType"></span>
-            </div>
-            <div id="nodeDetails"></div>
+    <div id="header">
+        <h1>Bifrost Sovereign Memory Graph</h1>
+        <div class="subtitle">Interactive knowledge graph • 85 entities • 118 relationships</div>
+        <div style="margin-top: 15px;">
+            <button class="tab-btn active" onclick="filterNodes('all')">All</button>
+            <button class="tab-btn" onclick="filterNodes('person')">People</button>
+            <button class="tab-btn" onclick="filterNodes('meeting')">Meetings</button>
+            <button class="tab-btn" onclick="filterNodes('action_item')">Actions</button>
+            <button class="button" onclick="resetLayout()">Reset</button>
         </div>
-        
-        <div class="stats">
-            <div class="stat-row">Entities: <span class="stat-value" id="nodeCount">0</span></div>
-            <div class="stat-row">Relations: <span class="stat-value" id="linkCount">0</span></div>
-        </div>
-        
-        <div class="type-legend" id="legend"></div>
-        
-        <div class="controls">
-            <button onclick="layout()">Refresh Layout</button>
-            <button onclick="fitView()">Fit View</button>
-            <div class="control-group">
-                <div class="control-label">Gravity</div>
-                <input type="range" id="gravity" min="0" max="100" value="25" onchange="updateLayout()">
-            </div>
-        </div>
+    </div>
+    
+    <div id="cy"></div>
+    
+    <div id="sidebar">
+        <div class="sidebar-header" id="sidebarTitle">Select a node</div>
+        <div id="sidebarContent"></div>
+    </div>
+    
+    <div class="info-box">
+        <div>Nodes: <span class="info-value" id="nodeCount">0</span></div>
+        <div>Edges: <span class="info-value" id="edgeCount">0</span></div>
     </div>
 
     <script>
         let cy = null;
-        let allNodes = [];
-        let allEdges = [];
-        let currentFilter = 'all';
+        let fullGraph = null;
         
-        async function init() {
+        async function initGraph() {
             // Load graph data
-            const response = await fetch('graph-data.json');
-            const graph = await response.json();
+            const res = await fetch('graph-data.json');
+            fullGraph = await res.json();
             
-            allNodes = graph.nodes;
-            allEdges = graph.edges;
+            document.getElementById('nodeCount').textContent = fullGraph.nodes.length;
+            document.getElementById('edgeCount').textContent = fullGraph.edges.length;
             
-            document.getElementById('nodeCount').textContent = allNodes.length;
-            document.getElementById('linkCount').textContent = allEdges.length;
-            
-            // Build legend
-            const typeMap = {};
-            allNodes.forEach(n => {
-                if (!typeMap[n.type]) typeMap[n.type] = n.color;
-            });
-            const legendHtml = Object.entries(typeMap).map(([type, color]) => `
-                <div class="legend-item">
-                    <div class="legend-color" style="background: ${color};"></div>
-                    <span>${type.replace(/_/g, ' ')}</span>
-                </div>
-            `).join('');
-            document.getElementById('legend').innerHTML = legendHtml;
-            
-            // Initialize Cytoscape
-            renderGraph();
+            renderGraph(fullGraph.nodes, fullGraph.edges);
         }
         
-        function renderGraph() {
-            const elements = buildElements();
+        function renderGraph(nodes, edges) {
+            // Build Cytoscape elements
+            const cyNodes = nodes.map(n => ({
+                data: {
+                    id: n.id,
+                    label: n.label,
+                    type: n.type,
+                    description: n.description,
+                    ...n
+                },
+                style: {
+                    'background-color': n.color,
+                    'width': Math.max(20, Math.min(50, n.size || 30)),
+                    'height': Math.max(20, Math.min(50, n.size || 30))
+                }
+            }));
             
+            const cyEdges = edges.map((e, i) => ({
+                data: {
+                    id: `e${i}`,
+                    source: e.source,
+                    target: e.target,
+                    relation: e.relation,
+                    weight: e.weight || 1
+                }
+            }));
+            
+            // Destroy old instance
             if (cy) cy.destroy();
             
+            // Create new instance
             cy = cytoscape({
                 container: document.getElementById('cy'),
-                elements: elements,
+                elements: [...cyNodes, ...cyEdges],
                 style: [
                     {
                         selector: 'node',
                         style: {
-                            'background-color': 'data(color)',
                             'label': 'data(label)',
-                            'width': 'data(size)',
-                            'height': 'data(size)',
-                            'font-size': '10px',
                             'text-valign': 'center',
                             'text-halign': 'center',
+                            'font-size': '11px',
                             'color': '#fff',
                             'border-width': '2px',
                             'border-color': '#fff',
-                            'text-wrap': 'wrap',
-                            'text-max-width': '60px'
+                            'cursor': 'pointer'
                         }
                     },
                     {
                         selector: 'node:selected',
                         style: {
                             'border-color': '#FFD700',
-                            'border-width': '4px'
+                            'border-width': '4px',
+                            'box-shadow': '0 0 10px #FFD700'
                         }
                     },
                     {
                         selector: 'edge',
                         style: {
                             'line-color': '#4a5568',
+                            'width': 'mapData(weight, 1, 3, 1, 2)',
                             'opacity': '0.6',
-                            'width': 'mapData(weight, 0, 3, 1, 3)',
                             'curve-style': 'straight'
-                        }
-                    },
-                    {
-                        selector: 'edge:selected',
-                        style: {
-                            'line-color': '#FFD700',
-                            'opacity': '1',
-                            'width': '3px'
                         }
                     }
                 ],
-                wheelSensitivity: 0.1,
-                autounselectify: false
+                layout: {
+                    name: 'grid',
+                    rows: 1
+                },
+                wheelSensitivity: 0.1
             });
             
-            cy.on('tap', 'node', function(e) {
-                const node = e.target;
-                showNodeDetails(node.data());
-            });
+            // Event handlers
+            cy.on('tap', 'node', onNodeClick);
+            cy.on('tap', onBackgroundClick);
             
-            cy.on('tap', function(e) {
-                if (e.target === cy) {
-                    document.getElementById('sidebar').classList.add('hidden');
-                }
-            });
-            
-            layout();
+            // Run layout
+            resetLayout();
         }
         
-        function buildElements() {
-            let nodes = allNodes;
-            let edges = allEdges;
-            
-            if (currentFilter !== 'all') {
-                nodes = allNodes.filter(n => n.type === currentFilter);
-                const nodeIds = new Set(nodes.map(n => n.id));
-                edges = allEdges.filter(e => nodeIds.has(e.source) && nodeIds.has(e.target));
-            }
-            
-            const cyNodes = nodes.map(n => ({
-                data: { ...n, id: n.id, label: n.label },
-                style: { 'background-color': n.color }
-            }));
-            
-            const cyEdges = edges.map((e, i) => ({
-                data: { 
-                    id: `edge-${i}`,
-                    source: e.source, 
-                    target: e.target,
-                    weight: e.weight || 1,
-                    relation: e.relation
-                }
-            }));
-            
-            return [...cyNodes, ...cyEdges];
-        }
-        
-        function layout() {
+        function resetLayout() {
             if (!cy) return;
             
-            const gravity = parseInt(document.getElementById('gravity').value) / 100;
-            
+            // Use fruchterman layout (better spread)
             const layout = cy.layout({
-                name: 'cose-bilkent',
-                animate: true,
-                animationDuration: 1000,
-                animationEasing: 'ease-out',
-                avoidOverlap: true,
-                avoidOverlapPadding: 40,
-                nodeDimensionsIncludeLabels: true,
-                gravity: gravity * 0.5,
-                gravityRange: 500,
-                gravityCompound: gravity * 0.3,
-                nodeSpacing: 50,
-                edgeElasticity: 0.05,
-                nestingFactor: 0.5,
-                randomize: true,
-                tilingPaddingVertical: 50,
-                tilingPaddingHorizontal: 50,
-                quality: 'proof',
+                name: 'grid',
                 directed: false,
-                refresh: 10,
+                avoidOverlap: true,
+                nodeDimensionsIncludeLabels: true,
+                spacingFactor: 1.5,
+                animate: true,
+                animationDuration: 500,
                 fit: true,
-                padding: 100,
-                initialTemp: 400,
-                coolingFactor: 0.97,
-                minTemp: 0.01
+                padding: 50
             });
             
             layout.run();
+            
+            // Then switch to better layout
+            setTimeout(() => {
+                const betterLayout = cy.layout({
+                    name: 'breadthFirstSearch',
+                    directed: false,
+                    roots: cy.nodes()[0],
+                    animate: true,
+                    animationDuration: 500,
+                    fit: true,
+                    padding: 50
+                });
+                betterLayout.run();
+            }, 600);
         }
         
-        function updateLayout() {
-            layout();
-        }
-        
-        function fitView() {
-            if (cy) cy.fit(null, 50);
-        }
-        
-        function setFilter(type) {
-            currentFilter = type;
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        function filterNodes(type) {
+            // Update button state
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             event.target.classList.add('active');
             
-            const elements = buildElements();
-            document.getElementById('nodeCount').textContent = elements.filter(e => !e.data.source).length;
-            document.getElementById('linkCount').textContent = elements.filter(e => e.data.source).length;
+            let nodes = fullGraph.nodes;
+            let edges = fullGraph.edges;
             
-            renderGraph();
+            if (type !== 'all') {
+                nodes = fullGraph.nodes.filter(n => n.type === type);
+                const nodeIds = new Set(nodes.map(n => n.id));
+                edges = fullGraph.edges.filter(e => nodeIds.has(e.source) && nodeIds.has(e.target));
+            }
+            
+            document.getElementById('nodeCount').textContent = nodes.length;
+            document.getElementById('edgeCount').textContent = edges.length;
+            
+            renderGraph(nodes, edges);
         }
         
-        function showNodeDetails(nodeData) {
+        function onNodeClick(e) {
+            const node = e.target.data();
             const sidebar = document.getElementById('sidebar');
-            document.getElementById('nodeTitle').textContent = nodeData.label;
-            document.getElementById('nodeType').textContent = nodeData.type.replace(/_/g, ' ');
+            
+            document.getElementById('sidebarTitle').textContent = node.label;
             
             let html = `
                 <div class="sidebar-section">
+                    <div class="sidebar-label">Type</div>
+                    <div class="sidebar-value">${node.type.replace(/_/g, ' ')}</div>
+                </div>
+                <div class="sidebar-section">
                     <div class="sidebar-label">Description</div>
-                    <div class="sidebar-value">${nodeData.description || 'No description'}</div>
+                    <div class="sidebar-value">${node.description || 'No description'}</div>
                 </div>
             `;
             
-            // Type-specific metadata
-            if (nodeData.type === 'person' && nodeData.actionsOwned) {
+            // Add metadata
+            if (node.type === 'person' && node.actionsOwned) {
                 html += `
                     <div class="sidebar-section">
-                        <div class="sidebar-label">Details</div>
-                        <div class="sidebar-value">
-                            <strong>Actions Owned:</strong> ${nodeData.actionsOwned}<br>
-                            <strong>Last Active:</strong> ${nodeData.lastActive || 'Unknown'}
-                        </div>
+                        <div class="sidebar-label">Actions Owned</div>
+                        <div class="sidebar-value">${node.actionsOwned}</div>
                     </div>
                 `;
-            } else if (nodeData.type === 'action_item') {
+            } else if (node.type === 'action_item' && node.deadline) {
                 html += `
                     <div class="sidebar-section">
-                        <div class="sidebar-label">Details</div>
-                        <div class="sidebar-value">
-                            <strong>Owner:</strong> ${nodeData.owner || 'Unassigned'}<br>
-                            <strong>Deadline:</strong> ${nodeData.deadline || 'No deadline'}<br>
-                            <strong>Status:</strong> ${nodeData.status || 'Open'}
-                            ${nodeData.isOverdue ? '<br><strong style="color: #C0392B;">⚠️ OVERDUE</strong>' : ''}
-                        </div>
+                        <div class="sidebar-label">Deadline</div>
+                        <div class="sidebar-value">${node.deadline}</div>
+                    </div>
+                    <div class="sidebar-section">
+                        <div class="sidebar-label">Status</div>
+                        <div class="sidebar-value">${node.status || 'Open'}</div>
                     </div>
                 `;
             }
             
-            // Related nodes
-            const relatedEdges = allEdges.filter(e => 
-                (e.source === nodeData.id || e.target === nodeData.id)
-            );
-            
-            if (relatedEdges.length > 0) {
-                html += `
-                    <div class="sidebar-section">
-                        <div class="sidebar-label">Connected To (${relatedEdges.length})</div>
-                        <div class="sidebar-value">
-                            ${relatedEdges.map(e => {
-                                const relatedNode = allNodes.find(n => 
-                                    n.id === (e.source === nodeData.id ? e.target : e.source)
-                                );
-                                return relatedNode ? `
-                                    <div class="relation-tag" style="cursor: pointer; margin-bottom: 8px;" 
-                                         onclick="cy.$('#${relatedNode.id}').trigger('tap')">
-                                        ${e.relation} → ${relatedNode.label.substring(0, 25)}
-                                    </div>
-                                ` : '';
-                            }).join('')}
-                        </div>
-                    </div>
-                `;
-            }
-            
-            document.getElementById('nodeDetails').innerHTML = html;
-            sidebar.classList.remove('hidden');
+            document.getElementById('sidebarContent').innerHTML = html;
+            sidebar.classList.add('show');
         }
         
-        window.addEventListener('load', init);
+        function onBackgroundClick(e) {
+            if (e.target === cy) {
+                document.getElementById('sidebar').classList.remove('show');
+            }
+        }
+        
+        // Init on load
+        window.addEventListener('load', initGraph);
     </script>
 </body>
 </html>
