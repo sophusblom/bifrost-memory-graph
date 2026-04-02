@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="496" height="570" font-family="Arial, sans-serif">
+<rect width="496" height="570" fill="#1a1a2e"/>
+<text x="248" y="24" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="bold">Karen Onboarding — 7-Day Plan (28 Mar – 4 Apr 2026)</text>
+<line x1="364" y1="70" x2="364" y2="570" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+<text x="366" y="50" fill="#aaaaaa" font-size="10">Mar 30</text>
+<line x1="320" y1="70" x2="320" y2="570" stroke="#FFD700" stroke-width="1.5" stroke-dasharray="4,3"/>
+<text x="322" y="80" fill="#FFD700" font-size="9">today</text>
+<rect x="0" y="70" width="496" height="40" fill="#ffffff" fill-opacity="0.03"/>
+<text x="8" y="94" fill="#dddddd" font-size="12">Access &amp; tooling (Slack, Drive, calendar)<tspan fill="#888888" font-size="10"> (Karen + Sophus)</tspan></text>
+<rect x="320" y="76" width="44" height="28" rx="4" fill="#2196F3" fill-opacity="0.85"/>
+<text x="342" y="94" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="bold">2d</text>
+<text x="8" y="134" fill="#dddddd" font-size="12">Read all context docs (SOUL, USER, MEMORY)<tspan fill="#888888" font-size="10"> (Karen)</tspan></text>
+<rect x="320" y="116" width="22" height="28" rx="4" fill="#4CAF50" fill-opacity="0.85"/>
+<rect x="0" y="150" width="496" height="40" fill="#ffffff" fill-opacity="0.03"/>
+<text x="8" y="174" fill="#dddddd" font-size="12">Team briefing — roles, working styles<tspan fill="#888888" font-size="10"> (Karen + Sophus)</tspan></text>
+<rect x="342" y="156" width="44" height="28" rx="4" fill="#9E9E9E" fill-opacity="0.85"/>
+<text x="364" y="174" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="bold">2d</text>
+<text x="8" y="214" fill="#dddddd" font-size="12">Build action log (Drive)<tspan fill="#888888" font-size="10"> (Karen)</tspan></text>
+<rect x="342" y="196" width="66" height="28" rx="4" fill="#9E9E9E" fill-opacity="0.85"/>
+<text x="375" y="214" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="bold">3d</text>
+<rect x="0" y="230" width="496" height="40" fill="#ffffff" fill-opacity="0.03"/>
+<text x="8" y="254" fill="#dddddd" font-size="12">Build decision log (Drive)<tspan fill="#888888" font-size="10"> (Karen)</tspan></text>
+<rect x="342" y="236" width="66" height="28" rx="4" fill="#9E9E9E" fill-opacity="0.85"/>
+<text x="375" y="254" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="bold">3d</text>
+<text x="8" y="294" fill="#dddddd" font-size="12">Build priority map (Drive)<tspan fill="#888888" font-size="10"> (Karen)</tspan></text>
+<rect x="364" y="276" width="66" height="28" rx="4" fill="#9E9E9E" fill-opacity="0.85"/>
+<text x="397" y="294" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="bold">3d</text>
+<rect x="0" y="310" width="496" height="40" fill="#ffffff" fill-opacity="0.03"/>
+<text x="8" y="334" fill="#dddddd" font-size="12">Cadence design — all recurring meetings<tspan fill="#888888" font-size="10"> (Karen + Sophus)</tspan></text>
+<rect x="364" y="316" width="66" height="28" rx="4" fill="#9E9E9E" fill-opacity="0.85"/>
+<text x="397" y="334" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="bold">3d</text>
+<text x="8" y="374" fill="#dddddd" font-size="12">Hiring pipeline tracking setup<tspan fill="#888888" font-size="10"> (Karen + Sophus)</tspan></text>
+<rect x="408" y="356" width="44" height="28" rx="4" fill="#9E9E9E" fill-opacity="0.85"/>
+<text x="430" y="374" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="bold">2d</text>
+<rect x="0" y="390" width="496" height="40" fill="#ffffff" fill-opacity="0.03"/>
+<text x="8" y="414" fill="#dddddd" font-size="12">KPI framework — metrics and owners<tspan fill="#888888" font-size="10"> (Karen + Philippe)</tspan></text>
+<rect x="408" y="396" width="66" height="28" rx="4" fill="#9E9E9E" fill-opacity="0.85"/>
+<text x="441" y="414" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="bold">3d</text>
+<text x="8" y="454" fill="#dddddd" font-size="12">GTM &amp; fundraise pulse templates<tspan fill="#888888" font-size="10"> (Karen)</tspan></text>
+<rect x="430" y="436" width="44" height="28" rx="4" fill="#9E9E9E" fill-opacity="0.85"/>
+<text x="452" y="454" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="bold">2d</text>
+<rect x="0" y="470" width="496" height="40" fill="#ffffff" fill-opacity="0.03"/>
+<text x="8" y="494" fill="#dddddd" font-size="12">First Friday Ops Pulse (live)<tspan fill="#888888" font-size="10"> (Karen)</tspan></text>
+<rect x="452" y="476" width="22" height="28" rx="4" fill="#9E9E9E" fill-opacity="0.85"/>
+<text x="8" y="534" fill="#dddddd" font-size="12">Full handover sign-off with Sophus<tspan fill="#888888" font-size="10"> (Karen + Sophus)</tspan></text>
+<rect x="452" y="516" width="44" height="28" rx="4" fill="#9E9E9E" fill-opacity="0.85"/>
+<text x="474" y="534" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="bold">2d</text>
+<rect x="320" y="548" width="10" height="10" fill="#4CAF50"/>
+<text x="333" y="556" fill="#aaaaaa" font-size="10">done</text>
+<rect x="420" y="548" width="10" height="10" fill="#2196F3"/>
+<text x="433" y="556" fill="#aaaaaa" font-size="10">in progress</text>
+<rect x="520" y="548" width="10" height="10" fill="#9E9E9E"/>
+<text x="533" y="556" fill="#aaaaaa" font-size="10">not started</text>
+<rect x="620" y="548" width="10" height="10" fill="#F44336"/>
+<text x="633" y="556" fill="#aaaaaa" font-size="10">blocked</text>
+</svg>

@@ -1,0 +1,168 @@
+{
+  "metadata": {
+    "name": "Bifrost Sovereign - Karen Memory Graph",
+    "description": "Interconnected knowledge graph of team, operations, infrastructure, and decision context",
+    "lastUpdated": "2026-04-02T20:45:00Z",
+    "version": "1.0"
+  },
+  "nodes": [
+    {
+      "id": "bifrost-sovereign",
+      "label": "Bifrost Sovereign",
+      "type": "company",
+      "description": "Pre-seed European sovereign AI infrastructure company",
+      "color": "#4A90E2",
+      "size": 40
+    },
+    {
+      "id": "karen",
+      "label": "Karen",
+      "type": "person",
+      "description": "Internal ops agent; owns operating cadence and action follow-through",
+      "color": "#E74C3C",
+      "size": 35
+    },
+    {
+      "id": "sacha-obeegadoo",
+      "label": "Sacha Obeegadoo",
+      "type": "person",
+      "description": "Co-founder GTM Agentic Cloud; natural completion anchor",
+      "color": "#2ECC71",
+      "size": 30
+    },
+    {
+      "id": "peter-damm",
+      "label": "Peter Damm",
+      "type": "person",
+      "description": "Co-founder GTM Data Centers + Fundraising; owns investor data room",
+      "color": "#2ECC71",
+      "size": 30
+    },
+    {
+      "id": "florian-fournier",
+      "label": "Florian Fournier",
+      "type": "person",
+      "description": "Co-founder Sales + Partnerships; marketing owned but not yet executed",
+      "color": "#2ECC71",
+      "size": 30
+    },
+    {
+      "id": "philippe-ambuehl",
+      "label": "Philippe Ambühl",
+      "type": "person",
+      "description": "Co-founder Legal/Ops + Finance (dual-hat)",
+      "color": "#2ECC71",
+      "size": 30
+    },
+    {
+      "id": "kristof-de-spiegeleer",
+      "label": "Kristof De Spiegeleer",
+      "type": "person",
+      "description": "Co-founder + Active Chairman; R&D/Technology",
+      "color": "#2ECC71",
+      "size": 30
+    },
+    {
+      "id": "thorbjorn-ronje",
+      "label": "Thorbjørn Rønje",
+      "type": "person",
+      "description": "Active Chairman GP at Bifrost Studios; shared data room",
+      "color": "#F39C12",
+      "size": 28
+    },
+    {
+      "id": "sophus-blom-hanssen",
+      "label": "Sophus Blom-Hanssen",
+      "type": "person",
+      "description": "Interim ops lead; primary human counterpart",
+      "color": "#9B59B6",
+      "size": 28
+    },
+    {
+      "id": "operating-cadence",
+      "label": "Operating Cadence",
+      "type": "topic",
+      "description": "Recurring meetings: all-hands, GTM war room, ops/finance close, hiring review, daily standup, Friday pulse",
+      "color": "#1ABC9C",
+      "size": 32
+    },
+    {
+      "id": "visionary-launcher-profile",
+      "label": "Visionary Launcher Profile",
+      "type": "concept",
+      "description": "Team strength: starting; weakness: finishing and documenting",
+      "color": "#E67E22",
+      "size": 28
+    },
+    {
+      "id": "action-follow-through-problem",
+      "label": "Action Follow-Through Problem",
+      "type": "topic",
+      "description": "Actions agreed in meetings disappear; no follow-through mechanism existed at 2026-03-28",
+      "color": "#C0392B",
+      "size": 28
+    },
+    {
+      "id": "google-drive-infrastructure",
+      "label": "Google Drive Infrastructure",
+      "type": "topic",
+      "description": "Service account; Bifrost shared drive; Karen workspace with action/decision logs",
+      "color": "#3498DB",
+      "size": 28
+    },
+    {
+      "id": "slack-setup",
+      "label": "Slack Setup",
+      "type": "topic",
+      "description": "Socket mode, streaming config, token management, common failures",
+      "color": "#3498DB",
+      "size": 26
+    },
+    {
+      "id": "fundraising-round",
+      "label": "Fundraising Round",
+      "type": "topic",
+      "description": "€3M equity + €1.5M debt on SAFE; cap €20–30M; pre-seed stage",
+      "color": "#27AE60",
+      "size": 26
+    },
+    {
+      "id": "supply-chain-owner-role",
+      "label": "Supply Chain Owner Role",
+      "type": "topic",
+      "description": "Open hire; needed for company operations",
+      "color": "#95A5A6",
+      "size": 24
+    },
+    {
+      "id": "bifrost-studios",
+      "label": "Bifrost Studios",
+      "type": "company",
+      "description": "Partner fund (Thorbjørn is GP)",
+      "color": "#34495E",
+      "size": 22
+    }
+  ],
+  "edges": [
+    { "source": "karen", "target": "bifrost-sovereign", "relation": "works_for", "weight": 3 },
+    { "source": "karen", "target": "operating-cadence", "relation": "owns", "weight": 3 },
+    { "source": "karen", "target": "action-follow-through-problem", "relation": "compensates", "weight": 3 },
+    { "source": "sacha-obeegadoo", "target": "bifrost-sovereign", "relation": "co_founder_of", "weight": 3 },
+    { "source": "sacha-obeegadoo", "target": "operating-cadence", "relation": "capacity_protected_for", "weight": 2 },
+    { "source": "peter-damm", "target": "bifrost-sovereign", "relation": "co_founder_of", "weight": 3 },
+    { "source": "peter-damm", "target": "fundraising-round", "relation": "leads", "weight": 3 },
+    { "source": "peter-damm", "target": "google-drive-infrastructure", "relation": "owns_data_room", "weight": 2 },
+    { "source": "florian-fournier", "target": "bifrost-sovereign", "relation": "co_founder_of", "weight": 3 },
+    { "source": "philippe-ambuehl", "target": "bifrost-sovereign", "relation": "co_founder_of", "weight": 3 },
+    { "source": "kristof-de-spiegeleer", "target": "bifrost-sovereign", "relation": "co_founder_and_chairman_of", "weight": 3 },
+    { "source": "thorbjorn-ronje", "target": "bifrost-sovereign", "relation": "active_chairman_of", "weight": 3 },
+    { "source": "thorbjorn-ronje", "target": "bifrost-studios", "relation": "partner_gp_of", "weight": 2 },
+    { "source": "sophus-blom-hanssen", "target": "bifrost-sovereign", "relation": "interim_ops_lead_of", "weight": 2 },
+    { "source": "sophus-blom-hanssen", "target": "karen", "relation": "human_counterpart_of", "weight": 2 },
+    { "source": "bifrost-sovereign", "target": "visionary-launcher-profile", "relation": "matches", "weight": 2 },
+    { "source": "operating-cadence", "target": "action-follow-through-problem", "relation": "resolves", "weight": 3 },
+    { "source": "google-drive-infrastructure", "target": "operating-cadence", "relation": "supports", "weight": 2 },
+    { "source": "slack-setup", "target": "operating-cadence", "relation": "enables", "weight": 2 },
+    { "source": "fundraising-round", "target": "bifrost-sovereign", "relation": "funds", "weight": 2 }
+  ]
+}

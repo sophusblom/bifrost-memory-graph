@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bifrost Sovereign - Karen Memory Graph</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0f1419;
+            color: #e0e0e0;
+            overflow: hidden;
+        }
+        
+        #container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a1f2e 0%, #2a2f3e 100%);
+            padding: 20px 30px;
+            border-bottom: 1px solid #3a4050;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0 0 8px 0;
+            color: #fff;
+        }
+        
+        .subtitle {
+            font-size: 13px;
+            color: #a0a0a0;
+        }
+        
+        #canvas {
+            flex: 1;
+            background: #0f1419;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        svg {
+            width: 100%;
+            height: 100%;
+            background: #0f1419;
+        }
+        
+        .node {
+            cursor: pointer;
+            stroke: #fff;
+            stroke-width: 2px;
+        }
+        
+        .node:hover {
+            stroke-width: 3px;
+            filter: brightness(1.2);
+        }
+        
+        .node.selected {
+            stroke: #FFD700;
+            stroke-width: 4px;
+            filter: brightness(1.3);
+        }
+        
+        .link {
+            stroke: #4a5568;
+            stroke-width: 1.5px;
+            stroke-opacity: 0.6;
+        }
+        
+        .link.active {
+            stroke: #FFD700;
+            stroke-width: 2.5px;
+            stroke-opacity: 1;
+        }
+        
+        text {
+            font-size: 12px;
+            pointer-events: none;
+            fill: #e0e0e0;
+            text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+            text-anchor: middle;
+        }
+        
+        .node-label {
+            font-weight: 500;
+            font-size: 11px;
+        }
+        
+        .link-label {
+            font-size: 10px;
+            fill: #8a8a8a;
+            background: #0f1419;
+        }
+        
+        #sidebar {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 380px;
+            height: 100vh;
+            background: #1a1f2e;
+            border-left: 1px solid #3a4050;
+            overflow-y: auto;
+            z-index: 100;
+            transition: transform 0.3s ease;
+            padding: 20px;
+        }
+        
+        #sidebar.hidden {
+            transform: translateX(100%);
+        }
+        
+        .sidebar-header {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #fff;
+            border-bottom: 1px solid #3a4050;
+            padding-bottom: 10px;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 20px;
+        }
+        
+        .sidebar-label {
+            font-size: 11px;
+            color: #8a8a8a;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+        
+        .sidebar-value {
+            font-size: 13px;
+            color: #e0e0e0;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+        
+        .relation-tag {
+            display: inline-block;
+            background: #3a4050;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            margin-right: 6px;
+            margin-bottom: 6px;
+        }
+        
+        .controls {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            background: rgba(26, 31, 46, 0.95);
+            border: 1px solid #3a4050;
+            border-radius: 8px;
+            padding: 15px;
+            z-index: 100;
+            min-width: 200px;
+        }
+        
+        .control-group {
+            margin-bottom: 12px;
+        }
+        
+        .control-label {
+            font-size: 11px;
+            color: #8a8a8a;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+            height: 5px;
+            border-radius: 3px;
+            background: #3a4050;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #4A90E2;
+            cursor: pointer;
+        }
+        
+        input[type="range"]::-moz-range-thumb {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #4A90E2;
+            cursor: pointer;
+            border: none;
+        }
+        
+        button {
+            background: #4A90E2;
+            border: 1px solid #3a5fa8;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: background 0.2s;
+            width: 100%;
+        }
+        
+        button:hover {
+            background: #5a9ef2;
+        }
+        
+        .stats {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            background: rgba(26, 31, 46, 0.95);
+            border: 1px solid #3a4050;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 12px;
+            color: #a0a0a0;
+            z-index: 100;
+        }
+        
+        .stat-row {
+            margin-bottom: 6px;
+        }
+        
+        .stat-value {
+            color: #4A90E2;
+            font-weight: 600;
+        }
+        
+        .type-legend {
+            position: fixed;
+            left: 20px;
+            top: 140px;
+            background: rgba(26, 31, 46, 0.95);
+            border: 1px solid #3a4050;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 11px;
+            z-index: 100;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <header>
+            <h1>Bifrost Sovereign Memory Graph</h1>
+            <div class="subtitle">Interactive knowledge graph • Karen's operations context</div>
+        </header>
+        <div id="canvas">
+            <svg id="graph"></svg>
+        </div>
+        
+        <div id="sidebar" class="hidden">
+            <div class="sidebar-header" id="nodeTitle">Select a node</div>
+            <div id="nodeDetails"></div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-row">Entities: <span class="stat-value" id="nodeCount">0</span></div>
+            <div class="stat-row">Relations: <span class="stat-value" id="linkCount">0</span></div>
+        </div>
+        
+        <div class="type-legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background: #4A90E2;"></div>
+                <span>Company</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #2ECC71;"></div>
+                <span>Person</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #1ABC9C;"></div>
+                <span>Topic</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #E67E22;"></div>
+                <span>Concept</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #F39C12;"></div>
+                <span>Chair/Advisor</span>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <div class="control-group">
+                <div class="control-label">Force Strength</div>
+                <input type="range" id="forceStrength" min="0.1" max="5" step="0.1" value="1">
+            </div>
+            <button onclick="resetZoom()">Reset View</button>
+        </div>
+    </div>
+
+    <script>
+        const graphUrl = 'graph-data.json';
+        
+        let graph = null;
+        let simulation = null;
+        let selectedNode = null;
+        
+        // Load and render graph
+        async function loadGraph() {
+            try {
+                const response = await fetch(graphUrl);
+                graph = await response.json();
+                renderGraph();
+            } catch (error) {
+                console.error('Error loading graph:', error);
+                document.getElementById('nodeTitle').textContent = 'Error loading graph data';
+            }
+        }
+        
+        function renderGraph() {
+            const width = document.getElementById('canvas').clientWidth;
+            const height = document.getElementById('canvas').clientHeight;
+            
+            const svg = d3.select('#graph');
+            svg.selectAll('*').remove();
+            
+            // Update stats
+            document.getElementById('nodeCount').textContent = graph.nodes.length;
+            document.getElementById('linkCount').textContent = graph.edges.length;
+            
+            // Create container groups
+            const g = svg.append('g');
+            
+            // Add zoom behavior
+            const zoom = d3.zoom()
+                .on('zoom', (event) => {
+                    g.attr('transform', event.transform);
+                });
+            svg.call(zoom);
+            
+            // Create force simulation
+            simulation = d3.forceSimulation(graph.nodes)
+                .force('link', d3.forceLink(graph.edges)
+                    .id(d => d.id)
+                    .distance(80)
+                    .strength(0.1))
+                .force('charge', d3.forceManyBody().strength(-300))
+                .force('center', d3.forceCenter(width / 2, height / 2))
+                .force('collision', d3.forceCollide().radius(d => d.size + 5));
+            
+            // Draw edges
+            const link = g.append('g')
+                .selectAll('line')
+                .data(graph.edges)
+                .enter()
+                .append('line')
+                .attr('class', 'link')
+                .attr('stroke-width', d => d.weight * 0.5);
+            
+            // Draw nodes
+            const node = g.append('g')
+                .selectAll('circle')
+                .data(graph.nodes)
+                .enter()
+                .append('circle')
+                .attr('class', 'node')
+                .attr('r', d => d.size)
+                .attr('fill', d => d.color)
+                .on('click', (event, d) => selectNode(d, event))
+                .call(drag(simulation));
+            
+            // Add labels
+            const labels = g.append('g')
+                .selectAll('text')
+                .data(graph.nodes)
+                .enter()
+                .append('text')
+                .attr('class', 'node-label')
+                .attr('text-anchor', 'middle')
+                .attr('dominant-baseline', 'middle')
+                .text(d => d.label.split(' ')[0])
+                .style('pointer-events', 'none');
+            
+            // Update positions on simulation
+            simulation.on('tick', () => {
+                link
+                    .attr('x1', d => d.source.x)
+                    .attr('y1', d => d.source.y)
+                    .attr('x2', d => d.target.x)
+                    .attr('y2', d => d.target.y);
+                
+                node
+                    .attr('cx', d => d.x)
+                    .attr('cy', d => d.y);
+                
+                labels
+                    .attr('x', d => d.x)
+                    .attr('y', d => d.y);
+            });
+            
+            // Zoom to initial view
+            const bounds = g.node().getBBox();
+            const midX = bounds.x + bounds.width / 2;
+            const midY = bounds.y + bounds.height / 2;
+            const scale = Math.min(width / bounds.width, height / bounds.height) * 0.8;
+            svg.transition().duration(750).call(zoom.transform,
+                d3.zoomIdentity
+                    .translate(width / 2, height / 2)
+                    .scale(scale)
+                    .translate(-midX, -midY)
+            );
+        }
+        
+        function selectNode(d, event) {
+            event.stopPropagation();
+            selectedNode = d;
+            
+            // Update node selection
+            d3.selectAll('.node').classed('selected', n => n.id === d.id);
+            d3.selectAll('.link').classed('active', l => l.source.id === d.id || l.target.id === d.id);
+            
+            // Update sidebar
+            const sidebar = document.getElementById('sidebar');
+            document.getElementById('nodeTitle').textContent = d.label;
+            
+            const html = `
+                <div class="sidebar-section">
+                    <div class="sidebar-label">Type</div>
+                    <div class="sidebar-value">${d.type}</div>
+                </div>
+                <div class="sidebar-section">
+                    <div class="sidebar-label">Description</div>
+                    <div class="sidebar-value">${d.description}</div>
+                </div>
+                <div class="sidebar-section">
+                    <div class="sidebar-label">Relationships</div>
+                    <div class="sidebar-value">
+                        ${graph.edges
+                            .filter(e => e.source.id === d.id || e.target.id === d.id)
+                            .map(e => {
+                                const isSource = e.source.id === d.id;
+                                const related = isSource ? e.target : e.source;
+                                const verb = isSource ? '→' : '←';
+                                return `<div class="relation-tag">${verb} ${e.relation}</div>`;
+                            })
+                            .join('')}
+                    </div>
+                </div>
+                <div class="sidebar-section">
+                    <div class="sidebar-label">Connected Entities</div>
+                    <div class="sidebar-value">
+                        ${graph.edges
+                            .filter(e => e.source.id === d.id || e.target.id === d.id)
+                            .map(e => {
+                                const related = e.source.id === d.id ? e.target : e.source;
+                                return `<div style="margin-bottom: 6px; padding: 6px; background: #2a2f3e; border-radius: 3px; font-size: 12px; cursor: pointer;" onclick="selectNodeByLabel('${related.label}')">${related.label}</div>`;
+                            })
+                            .join('')}
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('nodeDetails').innerHTML = html;
+            sidebar.classList.remove('hidden');
+        }
+        
+        function selectNodeByLabel(label) {
+            const node = graph.nodes.find(n => n.label === label);
+            if (node) {
+                selectNode(node, { stopPropagation: () => {} });
+            }
+        }
+        
+        function drag(simulation) {
+            function dragstarted(event, d) {
+                if (!event.active) simulation.alphaTarget(0.3).restart();
+                d.fx = d.x;
+                d.fy = d.y;
+            }
+            
+            function dragged(event, d) {
+                d.fx = event.x;
+                d.fy = event.y;
+            }
+            
+            function dragended(event, d) {
+                if (!event.active) simulation.alphaTarget(0);
+                d.fx = null;
+                d.fy = null;
+            }
+            
+            return d3.drag()
+                .on('start', dragstarted)
+                .on('drag', dragged)
+                .on('end', dragended);
+        }
+        
+        function resetZoom() {
+            d3.select('#graph').transition().duration(750).call(d3.zoom().transform, d3.zoomIdentity);
+        }
+        
+        document.getElementById('forceStrength').addEventListener('input', (e) => {
+            const strength = parseFloat(e.target.value);
+            if (simulation) {
+                simulation.force('charge', d3.forceManyBody().strength(-300 * strength));
+                simulation.alpha(0.3).restart();
+            }
+        });
+        
+        // Close sidebar on escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.getElementById('sidebar').classList.add('hidden');
+            }
+        });
+        
+        // Load graph on page load
+        window.addEventListener('load', loadGraph);
+    </script>
+</body>
+</html>
